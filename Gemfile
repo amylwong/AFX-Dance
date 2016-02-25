@@ -45,10 +45,10 @@ group :development do
   gem 'spring'
 
 # making your Gemfile safe for Heroku
-group :development, :test do
-  # make sure sqlite3 gem ONLY occurs inside development & test groups
-  gem 'sqlite3' # use SQLite only in development and testing
-end 
+# group :development, :test do
+#   # make sure sqlite3 gem ONLY occurs inside development & test groups
+#   gem 'sqlite3' # use SQLite only in development and testing
+# end 
 group :production do
   # make sure the following gems are in your production group:
   gem 'pg'              # use PostgreSQL in production (Heroku)
