@@ -35,9 +35,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'cucumber-rails' 
-  gem 'cucumber-rails-training-wheels'
-  gem 'rspec-rails'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels', :require => false
+  gem 'rspec-rails', :require => false
+  gem 'database_cleaner', :require => false
 end
 
 group :development do
