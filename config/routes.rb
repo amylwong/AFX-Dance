@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/auditionform', to: 'audition_form#index'
   post '/auditionform', to: 'audition_form#create_dancer', as: "audition_form"
 
+  # auditionee_profile_controller
+  get '/profile/:id', to: 'auditionee_profile#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

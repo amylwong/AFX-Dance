@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'pry'
+
 gem 'activeadmin', '1.0.0.pre2'
 gem 'devise'
 #gem "meta_search", '>= 1.1.0.pre'

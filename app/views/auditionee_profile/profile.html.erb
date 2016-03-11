@@ -1,0 +1,15 @@
+<center>
+<h1>Auditionee Profile</h1>
+    <% if @dancer.nil? %>
+       <h4>No audition profile found </h4>
+    <% else %>
+        <h4>Name: <%= @dancer.name %><br>
+            Audition Number: <%= @dancer.id %><br>
+            Year: <%= @dancer.year %><br>
+            Gender: <%= @dancer.gender %><br>
+            Email: <%= @dancer.email %><br>
+            Phone: <%= @dancer.phone %><br>
+            Video: <%= @dancer.audition %><br>
+        </h4>
+    <% end %>
+</center>
