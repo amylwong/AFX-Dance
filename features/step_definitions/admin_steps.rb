@@ -6,14 +6,14 @@ Given /the following (.*) exist:$/ do |type, table|
 end
 
 Given /^I am logged into the admin panel$/ do
-  visit '/accounts/login'
-  fill_in 'Email', :with => 'weee'
-  fill_in 'Password', :with => 'aaaaaaaa'
+  visit '/admin/login'
+  fill_in 'Email', :with => 'admin@example.com'
+  fill_in 'Password', :with => 'password'
   click_button 'Login'
   if page.respond_to? :should
-    page.should have_content('Login successful')
+    page.should have_content('Signed in successfully.')
   else
-    assert page.has_content?('Login successful')
+    assert page.has_content?('Signed in successfully.')
   end
 end
 
