@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'welcome/index'
+  
+  # audition_form_controller
+  get '/auditionform', to: 'audition_form#index'
+  post '/auditionform', to: 'audition_form#create_dancer', as: "audition_form"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
