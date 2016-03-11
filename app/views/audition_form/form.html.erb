@@ -1,11 +1,25 @@
 <center>
 <h1>AUDITION FORM</h1>
-<%= form_tag audition_form_path, :method => :post, :class => "audition-form" do %>
-    <%= text_field_tag :name, nil, placeholder: "NAME" %><br>
-    <%= text_field_tag :year, nil, placeholder: "YEAR" %><br>
-    <%= text_field_tag :gender, nil, placeholder: "GENDER" %><br>
-    <%= text_field_tag :email, nil, placeholder: "EMAIL" %><br>
-    <%= text_field_tag :phone, nil, placeholder: "PHONE #" %><br>
-    <%= submit_tag "SUBMIT" %>
+<!--<%= form_tag audition_form_path, :method => :post, :class => "audition-form" do %>-->
+<!--    <%= text_field_tag :name, nil, placeholder: "NAME" %><br>-->
+<!--    <%= text_field_tag :year, nil, placeholder: "YEAR" %><br>-->
+<!--    <%= text_field_tag :gender, nil, placeholder: "GENDER" %><br>-->
+<!--    <%= text_field_tag :email, nil, placeholder: "EMAIL" %><br>-->
+<!--    <%= text_field_tag :phone, nil, placeholder: "PHONE #" %><br>-->
+<!--    <%= submit_tag "SUBMIT" %>-->
+<!--<% end %>-->
+
+<%= form_for :dancer, :url => audition_form_path, :html => {:class => "audition-form"} do |f| %>
+    <% if @dancer.errors.any? %>
+        <% @dancer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    <% end %>
+
+    <%= f.text_field :name, placeholder: "NAME" %><br>
+    <%= f.text_field :year, placeholder: "YEAR" %><br>
+    <%= f.text_field :gender, placeholder: "GENDER" %><br>
+    <%= f.text_field :email, placeholder: "EMAIL" %><br>
+    <%= f.text_field :phone, placeholder: "PHONE #" %><br>
+    <%= f.submit "SUBMIT" %>
 <% end %>
-</center>

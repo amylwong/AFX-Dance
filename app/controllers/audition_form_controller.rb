@@ -1,18 +1,24 @@
 class AuditionFormController < ApplicationController
     
     def index
+        @dancer = Dancer.new
         render 'audition_form/form'
     end
     
     def create_dancer
-        name = params[:name]
-        year = params[:year]
-        gender = params[:gender]
-        email = params[:email]
-        phone = params[:phone]
-        dancer = Dancer.create(:name => name, :year => year, :gender => gender, :email => email, :phone => phone)
-        @audition_num = dancer.id.to_s
-        render "audition_form/number"
+        @dancer = Dancer.new(dancer_params)
+        if @dancer.save
+            @audition_num = @dancer.id.to_s
+            render "audition_form/number"
+        else
+            render "audition_form/form"
+        end
     end
     
+    private
+    
+    def dancer_params
+        params.require(:dancer).permit(:name, :year, :gender, :email, :phone)
+    end
+        
 end
