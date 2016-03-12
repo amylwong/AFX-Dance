@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   # auditionee_profile_controller
   get '/profile/:id', to: 'auditionee_profile#index'
+  
+  # dancer_controller
+  get '/random_assignment', to: 'dancers#random_assignment'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
