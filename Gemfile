@@ -41,6 +41,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'coveralls', :require => false
+  gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels', :require => false
   gem 'rspec-rails', :require => false

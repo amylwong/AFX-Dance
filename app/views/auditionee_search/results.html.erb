@@ -1,0 +1,14 @@
+<h1> Results </h1>
+
+<table>
+    <tr>
+        <th> Name </th>
+        <th> Link </th>
+    </tr>
+    <% @dancer.each do |dancers| %>
+    <tr>
+        <td><%= dancers.name %></td>
+        <td><%= link_to dancers.name, "/profile/" + dancers.id.to_s %></td>
+    </tr>
+    <% end %>
+</table>

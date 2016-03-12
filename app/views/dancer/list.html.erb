@@ -1,0 +1,22 @@
+<h1> All Dancers </h1>
+
+<table>
+    <tr>
+        <th>Casting Group ID</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Audition</th>
+        <th>Email</th>
+        <th>Link</th>
+    </tr>
+    <% @dancers.each do |dancer| %>
+    <tr>
+        <td><%= dancer.casting_group_id %></td>
+        <td><%= dancer.id.to_s %></td>
+        <td><%= dancer.name %></td>
+        <td><%= dancer.audition %></td>
+        <td><%= dancer.email %></td>
+        <td><%= link_to dancer.name, "/profile/" + dancer.id.to_s %></td>
+    </tr>
+    <% end %>
+</table>

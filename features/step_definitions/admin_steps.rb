@@ -2,6 +2,8 @@ Given /the following (.*) exist:$/ do |type, table|
   table.hashes.each do |element|
     if    type == "dancers"    then Dancer.create(element)
     end
+    if    type == "admins"     then AdminUser.create!(element)
+    end
   end
 end
 

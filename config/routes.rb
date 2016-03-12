@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'welcome/index'
+  #get 'welcome/index' , to: '/admin'
   
   # audition_form_controller
   get '/auditionform', to: 'audition_form#index'
@@ -9,6 +9,13 @@ Rails.application.routes.draw do
 
   # auditionee_profile_controller
   get '/profile/:id', to: 'auditionee_profile#index'
+  
+  # dancers_controller
+  get '/dancer', to: 'dancer#index'
+  
+  # auditionee_search_controller
+  get '/search', to: 'auditionee_search#index'
+  get '/search/results', to: 'auditionee_search#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

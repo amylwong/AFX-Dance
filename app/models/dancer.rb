@@ -11,4 +11,5 @@ class Dancer < ActiveRecord::Base
     message: "is not valid." }
     validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/,
     message: "must be in the format of XXX-XXX-XXXX." }
+    
 end

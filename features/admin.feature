@@ -8,7 +8,10 @@ Background: the admin page has some content
   Given I am on the Admin Login Page
   Given the following dancers exist:
      | id | name     | year    | gender | email           | phone        |
-     | 1  | Dancer1  | 4       | M      | test@test.com   | 999-999-9999 | 
+     | 1  | Dancer1  | 4       | M      | test@test.com   | 999-999-9999 |
+  Given the following admins exist:
+     | email             | password | password_confirmation |
+     | admin@example.com | password | password              |
   
 Scenario: I should be able to log in successfully as an Admin
   Given I log in as "admin@example.com" with password "password"
@@ -25,7 +28,7 @@ Scenario: I should be able to see Audition Form as an Admin
   Then I should be on the Admin Page
   And I should see "Signed in successfully."
   Then I follow "Audition Form"
-  And I should see "Audition Form"
+  And I should see "AUDITION FORM"
   And I fill in "dancer[name]" with "Name"
   And I fill in "dancer[year]" with "4"
   And I fill in "dancer[gender]" with "M"
