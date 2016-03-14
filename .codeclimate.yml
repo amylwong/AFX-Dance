@@ -1,0 +1,7 @@
+exclude_paths:
+	- coverage/**/*
+	- db/**/*
+	- features/**/*
+	- spec/**/*
+	- log/**/*
+	- tmp/**/*
