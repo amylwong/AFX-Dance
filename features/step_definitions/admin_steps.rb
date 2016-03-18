@@ -4,8 +4,7 @@ Given /the following (.*) exist:$/ do |type, table|
     end
     if    type == "admins"     then AdminUser.create!(element)
     end
-    if    type == "casting_groups" then Casting_Group.create(element)
-    end
+    if    type == "casting_groups" then CastingGroup.create(element)
     end
   end
 end

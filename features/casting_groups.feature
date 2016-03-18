@@ -13,9 +13,10 @@ Background: the admin page has some content
      | email             | password | password_confirmation |
      | admin@example.com | password | password              |
   Given the following casting_groups exist:
-     | id | dancer_id  |
+     | id | number  |
      | 1  | 1          |
 
+@wip
 Scenario: I should see all casting groups as an Admin
   Given I log in as "admin@example.com" with password "password"
   Then I should be on the Admin Page

@@ -2,7 +2,8 @@ Feature: General Site
   As a user
   So that I can learn about the organization
   I want to be able to view the main site
-  
+
+@wip
 Scenario: Main Page Navigation
   Given I am on the home page
   Then I should see "AFX"

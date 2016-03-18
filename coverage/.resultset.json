@@ -709,9 +709,9 @@
       ],
       "/home/ubuntu/workspace/AFX-Dance/config/routes.rb": [
         1,
-        1,
-        1,
         null,
+        1,
+        1,
         null,
         null,
         1,
@@ -788,6 +788,10 @@
         null,
         null,
         1,
+        null,
+        1,
+        0,
+        null,
         null
       ],
       "/home/ubuntu/workspace/AFX-Dance/app/helpers/application_helper.rb": [
@@ -898,8 +902,13 @@
         null,
         null,
         null
+      ],
+      "/home/ubuntu/workspace/AFX-Dance/app/models/casting_group.rb": [
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1457761678
+    "timestamp": 1458278690
   }
 }
