@@ -6,6 +6,8 @@ Given /the following (.*) exist:$/ do |type, table|
     end
     if    type == "casting_groups" then CastingGroup.create(element)
     end
+    if    type == "teams" then Team.create(element)
+    end
   end
 end
 

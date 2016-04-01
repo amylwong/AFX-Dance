@@ -7,8 +7,11 @@ Background: the admin page has some content
   
   Given I am on the Admin Login Page
   Given the following dancers exist:
-     | id | name     | year    | gender | email           | phone        |
-     | 1  | Dancer1  | 4       | M      | test@test.com   | 999-999-9999 |
+     | id | name     | year    | gender | email           | phone        | team_id |
+     | 1  | Dancer1  | 4       | M      | test@test.com   | 999-999-9999 | 1       |
+  Given the following teams exist:
+     | id | name     | project | dancer_id|
+     | 1  | Hi       | false   | 1        |
   Given the following admins exist:
      | email             | password | password_confirmation |
      | admin@example.com | password | password              |
@@ -57,3 +60,13 @@ Scenario: I should search dancers as an Admin
   Then I should see "Dancer1"
   Then I follow "Dancer1"
   Then I should see "Audition Number: 1"
+  
+Scenario: I should see dancers on a team
+  Given I log in as "admin@example.com" with password "password"
+  Then I should be on the Admin Page
+  And I should see "Signed in successfully."
+  And I go to "the Team Page"
+  Then I should see "Hi"
+  Then I follow "View"
+  Then I should see "Dancer1"
+

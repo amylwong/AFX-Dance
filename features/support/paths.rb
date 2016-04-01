@@ -19,7 +19,12 @@ module NavigationHelpers
       '/admin/login'
     when /^the Admin Page$/
       '/admin'
-      
+    when /^the Casting Group Page$/
+      '/admin/casting_groups'
+    when /^the Team Page$/
+      '/admin/teams'
+    when /^the Dancer Page$/
+      '/admin/dancers'
     else
       begin
         page_name =~ /^the (.*) page$/
