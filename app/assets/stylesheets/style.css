@@ -1,85 +1,77 @@
-h1 {
-    color: #495C70;
-    background: #BDCADC;
-    width: 370px;
-}
-h2 {
+#audition-form-body {
+    background: #d2d2d2;
+    vertical-align: middle;
     text-align: center;
-}
-li {
-    color: #F00;
-    font-size: 13px;
 }
 
 .audition-form{
-    width: 300px;
-    font-size: 16px;
-    background: #495C70;
-    padding: 30px 30px 15px 30px;
-    border: 5px solid #53687E;
-}
-.audition-form input[type=submit],
-.audition-form input[type=button],
-.audition-form input[type=text],
-.audition-form input[type=email],
-.audition-form textarea,
-.audition-form label
-{
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #fff;
+    font-family: 'Open Sans Condensed', arial, sans;
+    width: 500px;
+    padding: 30px;
+    background: #fff;
+    margin: 50px auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
 
 }
-.audition-form label {
-    display:block;
-    margin-bottom: 10px;
+.audition-form h2{
+    background: #4D4D4D;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #797979;
+    font-size: 38px;
+    font-weight: bold;
+    padding: 20px;
+    margin: -30px -30px 30px -30px;
 }
-.audition-form label > span{
-    display: inline-block;
-    float: left;
-    width: 150px;
-}
-.audition-form input[type=text],
-.audition-form input[type=email] 
+.audition-form input[type="text"],
+.audition-form input[type="date"],
+.audition-form input[type="datetime"],
+.audition-form input[type="email"],
+.audition-form input[type="number"],
+.audition-form input[type="search"],
+.audition-form input[type="time"],
+.audition-form input[type="url"],
+.audition-form input[type="password"],
+.audition-form textarea,
+.audition-form select 
 {
-    background: transparent;
-    border: none;
-    border-bottom: 1px dashed #83A4C5;
-    width: 275px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     outline: none;
-    padding: 0px 0px 0px 0px;
-    font-style: none;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    font: 16px Arial, Helvetica, sans-serif;
+    height: 45px;
 }
 .audition-form textarea{
-    font-style: none;
-    padding: 0px 0px 0px 0px;
-    background: transparent;
-    outline: none;
-    border: none;
-    border-bottom: 1px dashed #83A4C5;
-    width: 275px;
-    overflow: hidden;
     resize:none;
-    height:20px;
+    overflow: hidden;
 }
-
-.audition-form textarea:focus, 
-.audition-form input[type=text]:focus,
-.audition-form input[type=email]:focus,
-.audition-form input[type=email] :focus
-{
-    border-bottom: 1px dashed #BDCADC;
+.audition-form input[type="button"], 
+.audition-form input[type="submit"]{
+    -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    background-color: #2CBBBB;
+    border: 1px solid #27A0A0;
+    border-radius: 0px;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    padding: 8px 18px;
+    text-decoration: none;
+    text-transform: uppercase;
 }
-
-.audition-form input[type=submit],
-.audition-form input[type=button]{
-    background: #576E86;
-    border: none;
-    padding: 8px 10px 8px 10px;
-    border-radius: 5px;
-    color: #A8BACE;
-}
-.audition-form input[type=submit]:hover,
-.audition-form input[type=button]:hover{
-background: #394D61;
+.audition-form input[type="button"]:hover, 
+.audition-form input[type="submit"]:hover {
+    background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+    background-color:#34CACA;
 }

@@ -1,17 +1,19 @@
-<center>
-<h1>AUDITION FORM</h1>
+<body id="audition-form-body">
 <%= form_for :dancer, :url => audition_form_path, :html => {:class => "audition-form"} do |f| %>
+    <h2>AFX AUDITIONS</h2>
     <% if @dancer.errors.any? %>
         <% @dancer.errors.full_messages.each do |message| %>
             <li><%= message %></li>
         <% end %>
     <% end %>
 
+    <!--TODO: make gender and year dropdown list-->
+
     <%= f.text_field :name, placeholder: "NAME" %><br>
     <%= f.text_field :year, placeholder: "YEAR" %><br>
     <%= f.text_field :gender, placeholder: "GENDER" %><br>
     <%= f.text_field :email, placeholder: "EMAIL" %><br>
-    <%= f.text_field :phone, placeholder: "PHONE #" %><br>
-    <%= f.submit "SUBMIT" %>
+    <%= f.text_field :phone, placeholder: "PHONE" %><br>
+    <%= f.submit "I'm ready to audition!" %>
 <% end %>
-</center>
+</body>

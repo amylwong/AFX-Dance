@@ -4,10 +4,10 @@ class Dancer < ActiveRecord::Base
     belongs_to :casting_group
     
     validates :name, :year, :gender, :email, :phone, presence: true
-    validates :year, inclusion: { in: %w(1 2 3 4 other),
-    message: "must be 1, 2, 3, 4, or other." }
-    validates :gender, inclusion: { in: %w(M F),
-    message: "must be M or F." }
+    validates :year, inclusion: { in: %w(1 2 3 4 Other),
+    message: "must be 1, 2, 3, 4, or Other." }
+    validates :gender, inclusion: { in: %w(Male Female),
+    message: "must be Male or Female." }
     validates :email, format: { :with => /@/,
     message: "is not valid." }
     validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/,
