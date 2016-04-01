@@ -1,4 +1,6 @@
 class CastingGroup < ActiveRecord::Base
+    
+    attr_accessor :members
     has_many :dancers
     
     validates :video, format: { 
