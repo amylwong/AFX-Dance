@@ -38,7 +38,9 @@ ActiveAdmin.register Team do
                 list.each do |dancer|
                     row dancer.name do
                         link_to('See Profile', "/admin/dancers/#{dancer.id}")
+
                     end
+
                 end
             end 
         end

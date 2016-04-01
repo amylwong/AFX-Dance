@@ -38,4 +38,27 @@ ActiveAdmin.register Dancer do
             redirect_to '/admin/dancers', :alert => "#{list} are already on your team"
         end
     end
+    
+    batch_action :remove_from_my_team do |ids|
+        #Dancer.find(ids).each do |dancer|
+            #flash[:notice] = "Hi #{dancer}"
+            # team = Team.find_by name: 'Hi'
+            # team.Dancers << dancer
+        #end
+        list = []
+        delete = false
+        Dancer.find(ids).each do |id|
+            if id.teams.include? Team.find(1)
+                Team.find(1).dancers.delete(id)
+                Team.find(1).save
+                delete = true
+                list << id.name
+            end
+        end
+        if delete
+            redirect_to '/admin/dancers', :alert => "#{list} have been deleted from your team"
+        else
+            redirect_to '/admin/dancers', :alert => "#{list} were not on your team to start with"
+        end
+    end
 end
