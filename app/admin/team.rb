@@ -13,7 +13,36 @@ ActiveAdmin.register Team do
 #   permitted << :other if resource.something?
 #   permitted
 # end
-    
-
-
+    show do |user|
+        list = []
+        Team.find(params[:id]).dancers.all.each do |dancer|
+            list << dancer
+        end
+        panel "Details" do 
+            attributes_table_for user do
+                row :team_level do
+                    if Team.find(params[:id]).project
+                        "Project Team"
+                    else
+                        "Training Team"
+                    end
+                end
+                row :team_size do
+                    Team.find(params[:id]).dancers.all.length
+                end
+            end
+        end
+        
+        panel "Dancers" do 
+            attributes_table_for user do
+                list.each do |dancer|
+                    row dancer.name do
+                        link_to('See Profile', "/admin/dancers/#{dancer.id}")
+                    end
+                end
+            end 
+        end
+        
+        active_admin_comments
+    end
 end
