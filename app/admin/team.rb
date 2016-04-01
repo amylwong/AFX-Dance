@@ -1,4 +1,5 @@
 ActiveAdmin.register Team do
+    permit_params :project, :name
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -12,6 +13,7 @@ ActiveAdmin.register Team do
 #   permitted << :other if resource.something?
 #   permitted
 # end
+    
 
 
 end
