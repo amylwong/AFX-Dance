@@ -13,16 +13,17 @@ Background: the admin page has some content
      | email             | password | password_confirmation |
      | admin@example.com | password | password              |
   Given the following casting_groups exist:
-     | id | number  |
-     | 1  | 1          |
+     | id | video       |
+     | 1  | www.hi.com  |
 
 @wip
 Scenario: I should see all casting groups as an Admin
   Given I log in as "admin@example.com" with password "password"
   Then I should be on the Admin Page
   And I should see "Signed in successfully."
-  Then I follow "Casting Groups"
-  And I should see "Dancer IDs"
+  Then I go to the Casting Group Page
+  
+  
   And I should see "Name"
   And I should see "Casting Group #"
   Then I follow "1"
