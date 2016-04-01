@@ -1,5 +1,5 @@
 ActiveAdmin.register Team do
-    permit_params :project, :name
+    permit_params :project, :name, dancer_ids: []
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
