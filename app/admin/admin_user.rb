@@ -1,6 +1,6 @@
 ActiveAdmin.register AdminUser do
   
-  permit_params :email, :password, :password_confirmation, :admin_type
+  permit_params :email, :password, :password_confirmation, :admin_type, :team, :team_id
 
   index do
     selectable_column
@@ -33,9 +33,9 @@ ActiveAdmin.register AdminUser do
   show do
     attributes_table *default_attribute_table_rows
     panel "Team" do
-      table_for admin_user.team do
-        column :name
-        column :project
+      attributes_table_for admin_user.team do
+        row :name
+        row :project
       end
     end
     active_admin_comments
