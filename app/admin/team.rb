@@ -1,4 +1,5 @@
 ActiveAdmin.register Team do
+    
     permit_params :project, :name, dancer_ids: []
 
 # See permitted parameters documentation:
