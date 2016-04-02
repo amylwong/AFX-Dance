@@ -6,4 +6,9 @@ class ApplicationController < ActionController::Base
   def root_redirect
     redirect_to "/admin"
   end
+  
+  def access_denied(exception)
+    redirect_to "/admin/login"
+    #redirect_to admin_organizations_path, :alert => exception.message
+  end
 end
