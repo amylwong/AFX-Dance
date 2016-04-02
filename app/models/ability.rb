@@ -3,14 +3,18 @@ class Ability
 
   def initialize(user)
     
+    alias_action :create, :read, :update, :destroy, :to => :board
+    alias_action :read, :to => :project
+    alias_action :read, :to => :training 
+    
     if user.admin_type == "admin"
       can :manage, :all
     elsif user.admin_type == "board"
-      can :manage, :all
+      can :board, :all
     elsif user.admin_type == "project"
-      can :manage, :all
+      can :project, :all
     elsif user.admin_type == "training"
-      can :manage, :all
+      can :training, :all
     end
     
     # Define abilities for the passed in user here. For example:
