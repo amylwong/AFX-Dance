@@ -8,5 +8,15 @@ class AdminUser < ActiveRecord::Base
   
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
-
+         
+  # admin
+  # board
+  # project director
+  # training director
+  
+  validates :admin_type, inclusion: { 
+    in: %w(admin board project training),
+    message: "Must be either: admin, board, project or training."
+  }
+  
 end

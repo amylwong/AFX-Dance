@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "cancan"
 gem 'pry'
 
 gem 'activeadmin', '1.0.0.pre2'
