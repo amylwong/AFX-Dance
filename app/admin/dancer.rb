@@ -16,9 +16,10 @@ ActiveAdmin.register Dancer do
 # end
 
     #TODO!!!!
-    currTeam = Team.find(1) #Replace this with dynamically obtained team (its hardcoded right now as team 1)
     
     batch_action :add_to_my_team do |ids|
+        currTeam = Team.find(1) #Replace this with dynamically obtained team (its hardcoded right now as team 1)
+        
         #Dancer.find(ids).each do |dancer|
             #flash[:notice] = "Hi #{dancer}"
             # team = Team.find_by name: 'Hi'
@@ -43,6 +44,7 @@ ActiveAdmin.register Dancer do
     end
     
     batch_action :remove_from_my_team do |ids|
+        currTeam = Team.find(1) #Replace this with dynamically obtained team (its hardcoded right now as team 1)
         #Dancer.find(ids).each do |dancer|
             #flash[:notice] = "Hi #{dancer}"
             # team = Team.find_by name: 'Hi'
