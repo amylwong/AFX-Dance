@@ -15,7 +15,11 @@ ActiveAdmin.register Dancer do
 #   permitted
 # end
 
+    #TODO!!!!
+    
     batch_action :add_to_my_team do |ids|
+        currTeam = Team.find(1) #Replace this with dynamically obtained team (its hardcoded right now as team 1)
+        
         #Dancer.find(ids).each do |dancer|
             #flash[:notice] = "Hi #{dancer}"
             # team = Team.find_by name: 'Hi'
@@ -25,8 +29,8 @@ ActiveAdmin.register Dancer do
         add = false
         Dancer.find(ids).each do |id|
         #    flash[:notice] = "Hi #{id}"
-            if not id.teams.include? Team.find(1)
-                id.teams << Team.find(1)
+            if not id.teams.include? currTeam
+                id.teams << currTeam
                 id.save
                 add = true
             end
@@ -40,6 +44,7 @@ ActiveAdmin.register Dancer do
     end
     
     batch_action :remove_from_my_team do |ids|
+        currTeam = Team.find(1) #Replace this with dynamically obtained team (its hardcoded right now as team 1)
         #Dancer.find(ids).each do |dancer|
             #flash[:notice] = "Hi #{dancer}"
             # team = Team.find_by name: 'Hi'
@@ -48,9 +53,9 @@ ActiveAdmin.register Dancer do
         list = []
         delete = false
         Dancer.find(ids).each do |id|
-            if id.teams.include? Team.find(1)
-                Team.find(1).dancers.delete(id)
-                Team.find(1).save
+            if id.teams.include? currTeam
+                currTeam.dancers.delete(id)
+                currTeam.save
                 delete = true
                 list << id.name
             end
