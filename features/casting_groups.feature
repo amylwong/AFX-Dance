@@ -52,13 +52,3 @@ Scenario: As an admin, I should be able to see what casting group a dancer is in
 
 @wip
 Scenario: I should see all casting groups as an Admin
-  Given I log in as "admin@example.com" with password "password"
-  Then I should be on the Admin Page
-  And I should see "Signed in successfully."
-  Then I go to the Casting Group Page
-  
-  
-  And I should see "Name"
-  And I should see "Casting Group #"
-  Then I follow "1"
-  And I should see "Dancer1"

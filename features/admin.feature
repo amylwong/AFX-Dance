@@ -105,4 +105,8 @@ Scenario: As admin I should be able to make a project team
   Then I check "team_project"                                    
   Then I press "Create Team"                                     
   Then I should see "Bye"                                        
-  Then I should see "Project Team"                               
+  Then I should see "Project Team"              
+  
+@wip
+Scenario: As an admin, I should be able to search through dancers on the Dancers page.
+  

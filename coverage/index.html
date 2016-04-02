@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-02T07:47:42+00:00">2016-04-02T07:47:42+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-02T08:10:50+00:00">2016-04-02T08:10:50+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.58
+         3.67
        </span>
     </span> hits/line)
   </h2>
@@ -67,7 +67,7 @@
         <td>13</td>
         <td>12</td>
         <td>1</td>
-        <td>1.5</td>
+        <td>6.3</td>
       </tr>
       
       <tr>
@@ -87,7 +87,7 @@
         <td>14</td>
         <td>8</td>
         <td>6</td>
-        <td>5.6</td>
+        <td>19.1</td>
       </tr>
       
       <tr>
@@ -430,14 +430,14 @@
           <code class="ruby">    def index</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="4">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="4">
+          <span class="hits">11</span>
           
           <code class="ruby">        @dancer = Dancer.new</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="5">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="5">
+          <span class="hits">11</span>
           
           <code class="ruby">        render &#39;audition_form/form&#39;</code>
         </li>
@@ -460,26 +460,26 @@
           <code class="ruby">    def create_dancer</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="9">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="9">
+          <span class="hits">11</span>
           
           <code class="ruby">        @dancer = Dancer.new(dancer_params)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="10">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="10">
+          <span class="hits">11</span>
           
           <code class="ruby">        if @dancer.save</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="11">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="11">
+          <span class="hits">11</span>
           
           <code class="ruby">            @audition_num = @dancer.id.to_s</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="12">
+          <span class="hits">11</span>
           
           <code class="ruby">            render &quot;audition_form/number&quot;</code>
         </li>
@@ -532,8 +532,8 @@
           <code class="ruby">    def dancer_params</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="21">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="21">
+          <span class="hits">11</span>
           
           <code class="ruby">        params.require(:dancer).permit(:name, :year, :gender, :email, :phone)</code>
         </li>
@@ -634,20 +634,20 @@
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="6">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="53" data-linenumber="6">
+          <span class="hits">53</span>
           
           <code class="ruby">    alias_action :create, :read, :update, :destroy, :to =&gt; :board</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="7">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="53" data-linenumber="7">
+          <span class="hits">53</span>
           
           <code class="ruby">    alias_action :read, :to =&gt; :project</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="8">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="53" data-linenumber="8">
+          <span class="hits">53</span>
           
           <code class="ruby">    alias_action :read, :to =&gt; :training </code>
         </li>
@@ -658,14 +658,14 @@
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="10">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="53" data-linenumber="10">
+          <span class="hits">53</span>
           
           <code class="ruby">    if user.admin_type == &quot;admin&quot;</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="11">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="53" data-linenumber="11">
+          <span class="hits">53</span>
           
           <code class="ruby">      can :manage, :all</code>
         </li>
