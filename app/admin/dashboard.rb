@@ -10,19 +10,6 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     
-    columns do
-      column do
-        panel "Navigation" do
-          ul do
-            li link_to("Home Page","/")
-            li link_to("Audition Form","/auditionform")
-            li link_to("All Dancers","/dancer")
-            li link_to("Search","/search")
-          end
-        end
-      end
-    end
-
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
