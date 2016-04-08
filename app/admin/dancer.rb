@@ -14,6 +14,18 @@ ActiveAdmin.register Dancer do
     #   permitted << :other if resource.something?
     #   permitted
     # end
+    
+    form do |f|
+        f.inputs do
+            f.input :casting_group, member_label: Proc.new { |c| "#{c.id}" }
+            f.input :name
+            f.input :email
+            f.input :phone
+            f.input :year
+            f.input :gender
+        end
+        f.actions
+    end
 
     batch_action :add_to_my_team do |ids|
         if current_admin_user.team == nil
