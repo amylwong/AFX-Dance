@@ -23,11 +23,20 @@ ActiveAdmin.register CastingGroup do
         end
     end
     
-    show do
+    show do |user|
         casting_group = CastingGroup.find(params[:id])
         attributes_table *default_attribute_table_rows
         panel "Audition Video" do
             text_node link_to(casting_group.video, casting_group.video, method: :get).html_safe
+        end
+        panel "Dancers" do 
+            attributes_table_for user do
+                casting_group.dancers.each do |dancer|
+                    row dancer.name do
+                        link_to('See Profile', "/admin/dancers/#{dancer.id}")
+                    end
+                end
+            end 
         end
         active_admin_comments
     end
