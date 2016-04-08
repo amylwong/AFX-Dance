@@ -31,6 +31,14 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+end
+
+Then /^I am leading the team "([^\"]*)"$/ do |name|
+	User.team == name
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end

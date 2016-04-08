@@ -64,30 +64,32 @@ ActiveAdmin.register CastingGroup do
     end
     
     form do |f|
-        casting_group = CastingGroup.find(params[:id])
         
         f.inputs do
             f.input :video
             f.input :members
         end
         
-        member_ids = ""
-        for dancer in casting_group.dancers
-            member_ids += dancer.id.to_s + ","
+        if params[:id] != nil
+            casting_group = CastingGroup.find(params[:id])
+            member_ids = ""
+            for dancer in casting_group.dancers
+                member_ids += dancer.id.to_s + ","
+            end
+            if member_ids[-1,1] == ","
+                member_ids = member_ids.chomp(",")
+            end
+            if member_ids == ""
+                member_ids = "No dancers to display"
+            end
+            
+            start_format = "<ol><li class=\"string input optional stringish\">"
+            end_format = "</li></ol>"
+            
+            f.inputs "Current Dancer IDs" do
+                (start_format + member_ids + end_format).html_safe
+            end
         end
-        if member_ids[-1,1] == ","
-            member_ids = member_ids.chomp(",")
-        end
-        if member_ids == ""
-            member_ids = "No dancers to display"
-        end
-        
-        start_format = "<ol><li class=\"string input optional stringish\">"
-        end_format = "</li></ol>"
-        
-        f.inputs "Current Dancer IDs" do
-            (start_format + member_ids + end_format).html_safe
-      end
         f.actions
     end
     
