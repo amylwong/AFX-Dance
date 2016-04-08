@@ -14,18 +14,18 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-08T04:06:42+00:00">2016-04-08T04:06:42+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-08T16:19:31+00:00">2016-04-08T16:19:31+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">92.5%</span></span>
+    (<span class="covered_percent"><span class="green">93.33%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.67
+         3.82
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>23</b> files in total.
     <b>120</b> relevant lines. 
-    <span class="green"><b>111</b> lines covered</span> and
-    <span class="red"><b>9</b> lines missed </span>
+    <span class="green"><b>112</b> lines covered</span> and
+    <span class="red"><b>8</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -62,12 +62,12 @@
       
       <tr>
         <td class="strong"><a href="#c370bc81654ac44dbc68323ae8fb811ac4e37cb3" class="src_link" title="app/controllers/audition_form_controller.rb">app/controllers/audition_form_controller.rb</a></td>
-        <td class="green strong">92.31 %</td>
+        <td class="green strong">100.0 %</td>
         <td>24</td>
         <td>13</td>
-        <td>12</td>
-        <td>1</td>
-        <td>6.3</td>
+        <td>13</td>
+        <td>0</td>
+        <td>6.8</td>
       </tr>
       
       <tr>
@@ -87,7 +87,7 @@
         <td>14</td>
         <td>8</td>
         <td>6</td>
-        <td>19.1</td>
+        <td>19.9</td>
       </tr>
       
       <tr>
@@ -401,11 +401,11 @@
         <div class="source_table" id="c370bc81654ac44dbc68323ae8fb811ac4e37cb3">
   <div class="header">
     <h3>app/controllers/audition_form_controller.rb</h3>
-    <h4><span class="green">92.31 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
       <b>13</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <span class="green"><b>13</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -430,14 +430,14 @@
           <code class="ruby">    def index</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="4">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="4">
+          <span class="hits">12</span>
           
           <code class="ruby">        @dancer = Dancer.new</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="5">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="5">
+          <span class="hits">12</span>
           
           <code class="ruby">        render &#39;audition_form/form&#39;</code>
         </li>
@@ -460,14 +460,14 @@
           <code class="ruby">    def create_dancer</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="9">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="9">
+          <span class="hits">12</span>
           
           <code class="ruby">        @dancer = Dancer.new(dancer_params)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="10">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="10">
+          <span class="hits">12</span>
           
           <code class="ruby">        if @dancer.save</code>
         </li>
@@ -490,8 +490,8 @@
           <code class="ruby">        else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
           
           <code class="ruby">            render &quot;audition_form/form&quot;</code>
         </li>
@@ -532,8 +532,8 @@
           <code class="ruby">    def dancer_params</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="21">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="21">
+          <span class="hits">12</span>
           
           <code class="ruby">        params.require(:dancer).permit(:name, :year, :gender, :email, :phone)</code>
         </li>
@@ -634,20 +634,20 @@
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="6">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="55" data-linenumber="6">
+          <span class="hits">55</span>
           
           <code class="ruby">    alias_action :create, :read, :update, :destroy, :to =&gt; :board</code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="7">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="55" data-linenumber="7">
+          <span class="hits">55</span>
           
           <code class="ruby">    alias_action :read, :to =&gt; :project</code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="8">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="55" data-linenumber="8">
+          <span class="hits">55</span>
           
           <code class="ruby">    alias_action :read, :to =&gt; :training </code>
         </li>
@@ -658,14 +658,14 @@
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="10">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="55" data-linenumber="10">
+          <span class="hits">55</span>
           
           <code class="ruby">    if user.admin_type == &quot;admin&quot;</code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="11">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="55" data-linenumber="11">
+          <span class="hits">55</span>
           
           <code class="ruby">      can :manage, :all</code>
         </li>
