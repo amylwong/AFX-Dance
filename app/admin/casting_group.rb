@@ -24,6 +24,7 @@ ActiveAdmin.register CastingGroup do
         
         def update
             casting_group = CastingGroup.find(params[:id])
+            casting_group.video = params[:casting_group][:video]
             # this is to clear current dancers, lmao
             for dancer in casting_group.dancers
                 dancer.casting_group = nil
@@ -37,6 +38,7 @@ ActiveAdmin.register CastingGroup do
                 dancer.save
                 member_ids.delete(dancer.id.to_s)
             end
+            casting_group.save
             if member_ids.length != 0
                 redirect_to "/admin/casting_groups/#{casting_group.id}", :alert => "The following dancers were not added to the casting group: " + member_ids.to_s
             else
