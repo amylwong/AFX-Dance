@@ -1,6 +1,6 @@
 ActiveAdmin.register Team do
     
-    permit_params :project, :name, dancer_ids: []
+    permit_params :project, :name, :admin_user_id, admin_user_ids: [], dancer_ids: []
     
     member_action :toggle_lock, :method => :post do
         current_team = Team.find(params[:id])
@@ -41,7 +41,6 @@ ActiveAdmin.register Team do
         end
         
         panel "Details" do 
-    
             attributes_table_for user do
                 current_team = Team.find(params[:id])
                 row :team_level do
@@ -63,6 +62,17 @@ ActiveAdmin.register Team do
             end
         end
         
+        panel "Admins" do
+            current_team = Team.find(params[:id])
+            attributes_table_for user do
+                current_team.admin_users.each do |admin|
+                    row admin.email do
+                        link_to('See Admin', "admin/admin_users/#{admin.id}")
+                    end
+                end
+            end
+        end
+        
         panel "Dancers" do 
             attributes_table_for user do
                 list.each do |dancer|
@@ -77,8 +87,10 @@ ActiveAdmin.register Team do
     
     form do |f|
         f.inputs do
+            f.input :admin_users, member_label: Proc.new { |c| "#{c.email}" }
             f.input :project
             f.input :name
         end
+        f.actions
     end
 end
