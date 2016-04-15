@@ -24,6 +24,14 @@ class Team < ActiveRecord::Base
         return true
     end
     
+    def can_add(num)
+        if self.dancers.length + num > self.maximum_picks
+            return false
+        else
+            return true
+        end
+    end
+    
     def toggle_lock
         if locked
             self[:locked] = false
@@ -62,6 +70,29 @@ class Team < ActiveRecord::Base
             end
         end
         return removed
+    end
+    
+    def self.final_randomization
+        # get all dancers without a team
+        # get all training teams
+        # randomly assign each dancer to a training team, and then save all
+        teamless = []
+        # yolo way
+        Dancer.all.each do |dancer|
+            if dancer.teams.length == 0
+                teamless << dancer
+            end
+        end
+        
+        training_teams = []
+        Team.where("project = ? AND locked = ?", false, false).each do |team|
+            if team.dancers.length < 15
+                training_teams << team
+            end
+        end
+        
+        #WIP WIP
+        
     end
     
 end

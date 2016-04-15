@@ -1,6 +1,6 @@
 ActiveAdmin.register Team do
     
-    permit_params :project, :name, :admin_user_id, admin_user_ids: [], dancer_ids: []
+    permit_params :project, :name, :admin_user_id, :maximum_picks, admin_user_ids: [], dancer_ids: []
     
     member_action :toggle_lock, :method => :post do
         current_team = Team.find(params[:id])
@@ -88,6 +88,9 @@ ActiveAdmin.register Team do
                 row :csv do
                     link_to "Print CSV for #{current_team.name}", params.merge(:action => :roster_csv)
                 end
+                row :maximum_picks do
+                    current_team.maximum_picks
+                end
             end
         end
         
@@ -119,7 +122,13 @@ ActiveAdmin.register Team do
             f.input :admin_users, member_label: Proc.new { |c| "#{c.email}" }
             f.input :project
             f.input :name
+            f.input :maximum_picks
         end
         f.actions
+    end
+
+    csv do
+        column(:team) { |team| team.name }
+        column(:dancers) { |team| team.dancers.collect(&:name).join(", ") }
     end
 end
