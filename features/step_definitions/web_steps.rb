@@ -31,6 +31,14 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+end
+
+Then /^I am leading the team "([^\"]*)"$/ do |name|
+	User.team == name
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
@@ -45,6 +53,10 @@ end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
+end
+
+When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select value, from: field
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
@@ -80,4 +92,8 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   else
     assert_equal path_to(page_name), current_path
   end
+end
+
+When /^(?:|I )check "([^"]*)"$/ do |field|
+  check(field)
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402020834) do
+ActiveRecord::Schema.define(version: 20160415004622) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160402020834) do
     t.string  "phone"
     t.string  "year"
     t.string  "gender"
+    t.boolean "conflicted",       default: false
   end
 
   add_index "dancers", ["casting_group_id"], name: "index_dancers_on_casting_group_id"
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160402020834) do
   create_table "teams", force: :cascade do |t|
     t.boolean "project"
     t.string  "name"
+    t.boolean "locked",  default: false
   end
 
 end
