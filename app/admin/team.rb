@@ -2,22 +2,22 @@ ActiveAdmin.register Team do
     
     permit_params :project, :name, dancer_ids: []
     
-    action_item :add do
-        link_to "Toggle Team Lock", "/admin/teams/#{params[:id]}/toggle_lock" , method: :post
-    end
-    
     member_action :toggle_lock, :method => :post do
         current_team = Team.find(params[:id])
-        if current_admin_user.team == current_team
+        if current_admin_user.team == current_team or current_admin_user.admin_type == "admin"
             if not current_team.has_conflicted_dancers
                 current_team.toggle_lock
                 current_team.save
-                redirect_to "/admin/teams/#{params[:id]}"
+                if current_team.locked
+                    redirect_to "/admin/teams/#{params[:id]}", :alert => "#{current_team.name} has been locked"
+                else
+                    redirect_to "/admin/teams/#{params[:id]}", :alert => "#{current_team.name} has been unlocked"
+                end
             else
-                redirect_to "/admin/teams/#{params[:id]}", :alert => "Unable to lock. There are dancer conflicts"
+                redirect_to "/admin/teams/#{params[:id]}", :alert => "Unable to lock #{current_team.name}. There are dancer conflicts"
             end
         else
-            redirect_to "/admin/teams/#{params[:id]}", :alert => "You do not have ownership of this team"
+            redirect_to "/admin/teams/#{params[:id]}", :alert => "You do not have ownership of #{current_team.name}"
         end
     end
 
@@ -41,6 +41,7 @@ ActiveAdmin.register Team do
         end
         
         panel "Details" do 
+    
             attributes_table_for user do
                 current_team = Team.find(params[:id])
                 row :team_level do
@@ -52,6 +53,9 @@ ActiveAdmin.register Team do
                 end
                 row :locked do
                     current_team.locked
+                end
+                row :toggle_lock do
+                    link_to "Toggle Team Lock", "/admin/teams/#{params[:id]}/toggle_lock" , method: :post
                 end
                 row :team_size do
                     current_team.dancers.all.length
@@ -69,5 +73,12 @@ ActiveAdmin.register Team do
             end 
         end
         active_admin_comments
+    end
+    
+    form do |f|
+        f.inputs do
+            f.input :project
+            f.input :name
+        end
     end
 end
