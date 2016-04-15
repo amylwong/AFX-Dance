@@ -74,7 +74,7 @@ ActiveAdmin.register Dancer do
         column :casting_group
         column :conflicted
         actions do |dancer|
-            link_to "Add to my Team" #Do the thing here yay
+            link_to "Add to my Team"
         end
     end
     
