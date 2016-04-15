@@ -29,25 +29,16 @@ ActiveAdmin.register Dancer do
 
     batch_action :add_to_my_team do |ids|
         if current_admin_user.team == nil
-            puts "wow this is true"
             redirect_to '/admin/dancers', :alert => "your account is not associated with a team"
         else
-            currTeam = current_admin_user.team
-            list = []
-            add = false
-            Dancer.find(ids).each do |id|
-                if not id.teams.include? currTeam
-                    id.teams << currTeam
-                    id.save
-                    add = true
-                end
-                list << id.name
-            end
-            if add
-                redirect_to '/admin/dancers', :alert => "#{list} added to your team"
+            if current_admin_user.team.locked
+                redirect_to '/admin/dancers', :alert => "Your team is currently locked right now"
+            elsif current_admin_user.team.can_pick
+                added = current_admin_user.team.add_dancers(ids)
+                redirect_to '/admin/dancers', :alert => "#{added} added to your team"
             else
-                redirect_to '/admin/dancers', :alert => "#{list} are already on your team"
-            end 
+                redirect_to '/admin/dancers', :alert => "You cannot pick right now, project teams are still picking"
+            end
         end
     end
     
@@ -55,22 +46,14 @@ ActiveAdmin.register Dancer do
         if current_admin_user.team == nil
             redirect_to '/admin/dancers', :alert => "your account is not associated with a team"
         else
-            currTeam = current_admin_user.team
-            list = []
-            delete = false
-            Dancer.find(ids).each do |id|
-                if id.teams.include? currTeam
-                    currTeam.dancers.delete(id)
-                    currTeam.save
-                    delete = true
-                    list << id.name
-                end
-            end
-            if delete
-                redirect_to '/admin/dancers', :alert => "#{list} have been deleted from your team"
+            if current_admin_user.team.locked
+                redirect_to '/admin/dancers', :alert => "Your team is currently locked right now"
+            elsif current_admin_user.team.can_pick
+                removed = current_admin_user.team.remove_dancers(ids)
+                redirect_to '/admin/dancers', :alert => "#{removed} have been deleted from your team"
             else
-                redirect_to '/admin/dancers', :alert => "#{list} were not on your team to start with"
-            end 
+                redirect_to '/admin/dancers', :alert => "You cannot pick right now, project teams are still picking"
+            end
         end
     end
 end
