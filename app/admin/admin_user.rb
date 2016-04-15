@@ -7,9 +7,8 @@ ActiveAdmin.register AdminUser do
     id_column
     column :email
     column :admin_type
-    column :current_sign_in_at
-    column :sign_in_count
-    column :created_at
+    column :names
+    column :teams
     actions
   end
 
@@ -22,6 +21,7 @@ ActiveAdmin.register AdminUser do
   form do |f|
     f.inputs "Admin Details" do
       f.input :email
+      f.input :names
       f.input :admin_type
       f.input :team
       f.input :password

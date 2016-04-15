@@ -69,14 +69,14 @@ ActiveAdmin.register Dancer do
             dancer.teams.each.collect { |item| item.name }.join(", ")
         end
         column :casting_video do |dancer|
-            if dancer.casting_group != nil 
+            if dancer.casting_group != nil
                 text_node link_to(dancer.casting_group.video, dancer.casting_group.video, method: :get).html_safe
             end
         end
         column :casting_group
         column :conflicted
         actions do |dancer|
-            link_to "Add to my Team" #Do the thing here yay
+            link_to "Add to my Team"
         end
     end
     
@@ -105,11 +105,16 @@ ActiveAdmin.register Dancer do
             attributes_table_for dancer do
                 row :casting_group
                 row :casting_link do |dancer|
-                    text_node link_to(dancer.casting_group.video, dancer.casting_group.video, method: :get).html_safe
+                    if dancer.casting_group != nil
+                        text_node link_to(dancer.casting_group.video, dancer.casting_group.video, method: :get).html_safe
+                    end
                 end
                 row :casting_video do |dancer|
-                    regex = /^(?:https?:\/\/)?(?:www\.)?\w*\.\w*\/(?:watch\?v=)?((?:p\/)?[\w\-]+)/
-                    parse = dancer.casting_group.video.match(regex)
+                    parse = nil
+                    if dancer.casting_group != nil
+                        regex = /^(?:https?:\/\/)?(?:www\.)?\w*\.\w*\/(?:watch\?v=)?((?:p\/)?[\w\-]+)/
+                        parse = dancer.casting_group.video.match(regex)
+                    end
                     parse_link = 'Embed Failed'
                     if parse
                       parse_link = parse[1]

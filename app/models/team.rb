@@ -25,7 +25,9 @@ class Team < ActiveRecord::Base
     end
     
     def can_add(num)
-        if self.dancers.length + num > self.maximum_picks
+        if self.maximum_picks == nil
+            return true
+        elsif self.dancers.length + num > self.maximum_picks
             return false
         else
             return true
