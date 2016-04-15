@@ -92,6 +92,7 @@ ActiveAdmin.register Team do
             f.input :name
         end
         f.actions
+    end
 
     csv do
         column(:team) { |team| team.name }
