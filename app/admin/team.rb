@@ -117,6 +117,14 @@ ActiveAdmin.register Team do
         active_admin_comments
     end
     
+    index do
+        selectable_column
+        column :name
+        column :project
+        column :locked
+        actions
+    end
+    
     form do |f|
         f.inputs do
             f.input :admin_users, member_label: Proc.new { |c| "#{c.email}" }
