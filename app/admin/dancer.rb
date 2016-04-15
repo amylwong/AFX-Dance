@@ -34,8 +34,12 @@ ActiveAdmin.register Dancer do
             if current_admin_user.team.locked
                 redirect_to '/admin/dancers', :alert => "Your team is currently locked right now"
             elsif current_admin_user.team.can_pick
-                added = current_admin_user.team.add_dancers(ids)
-                redirect_to '/admin/dancers', :alert => "#{added} added to your team"
+                if current_admin_user.team.can_add(ids.length)
+                    added = current_admin_user.team.add_dancers(ids)
+                    redirect_to '/admin/dancers', :alert => "#{added} added to your team"
+                else
+                    redirect_to '/admin/dancers', :alert => "You are over the maximum number of picks you can have"
+                end
             else
                 redirect_to '/admin/dancers', :alert => "You cannot pick right now, project teams are still picking"
             end
