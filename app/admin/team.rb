@@ -97,4 +97,9 @@ ActiveAdmin.register Team do
         end
         f.actions
     end
+
+    csv do
+        column(:team) { |team| team.name }
+        column(:dancers) { |team| team.dancers.collect(&:name).join(", ") }
+    end
 end
