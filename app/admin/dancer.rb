@@ -56,4 +56,16 @@ ActiveAdmin.register Dancer do
             end
         end
     end
+    
+    
+    csv do
+        column(:casting_number) { |dancer| dancer.id }
+        column(:name) { |dancer| dancer.name }
+        column(:email) { |dancer| dancer.email }
+        column(:phone) { |dancer| dancer.phone }
+        column(:year) { |dancer| dancer.year }
+        column(:gender) { |dancer| dancer.gender }
+        column(:teams) { |dancer| dancer.teams.each.collect { |item| item.name }.join(", ") }
+    end
+    
 end
