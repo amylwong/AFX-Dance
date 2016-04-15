@@ -85,6 +85,7 @@ ActiveAdmin.register Team do
         active_admin_comments
     end
     
+<<<<<<< HEAD
     form do |f|
         f.inputs do
             f.input :admin_users, member_label: Proc.new { |c| "#{c.email}" }
@@ -92,5 +93,9 @@ ActiveAdmin.register Team do
             f.input :name
         end
         f.actions
+
+    csv do
+        column(:team) { |team| team.name }
+        column(:dancers) { |team| team.dancers.collect(&:name).join(", ") }
     end
 end
