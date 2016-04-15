@@ -69,7 +69,9 @@ ActiveAdmin.register Dancer do
             dancer.teams.each.collect { |item| item.name }.join(", ")
         end
         column :casting_video do |dancer|
-            text_node link_to(dancer.casting_group.video, dancer.casting_group.video, method: :get).html_safe
+            if dancer.casting_group != nil 
+                text_node link_to(dancer.casting_group.video, dancer.casting_group.video, method: :get).html_safe
+            end
         end
         column :casting_group
         column :conflicted
