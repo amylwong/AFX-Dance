@@ -99,7 +99,7 @@ ActiveAdmin.register Team do
             attributes_table_for user do
                 current_team.admin_users.each do |admin|
                     row admin.email do
-                        link_to('See Admin', "admin/admin_users/#{admin.id}")
+                        link_to('See Admin', "/admin/admin_users/#{admin.id}")
                     end
                 end
             end
