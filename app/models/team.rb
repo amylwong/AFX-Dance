@@ -53,6 +53,11 @@ class Team < ActiveRecord::Base
             if id.teams.include? self
                 self.dancers.delete(id)
                 self.save
+                id.reload
+                if id.teams.length < 3
+                    id.conflicted = false
+                end
+                id.save
                 removed << id.name
             end
         end
