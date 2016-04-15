@@ -45,4 +45,9 @@ ActiveAdmin.register Team do
         end
         active_admin_comments
     end
+    
+    csv do
+        column(:team) { |team| team.name }
+        column(:dancers) { |team| team.dancers.collect(&:name).join(", ") }
+    end
 end
