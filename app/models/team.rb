@@ -74,12 +74,16 @@ class Team < ActiveRecord::Base
         return removed
     end
     
+    def self.project_teams_done
+        if Team.where("project = ? AND locked = ?", true, false).length > 0
+            return false
+        else
+            return true
+        end
+    end
+    
     def self.final_randomization
-        # get all dancers without a team
-        # get all training teams
-        # randomly assign each dancer to a training team, and then save all
-        teamless = []
-        # yolo way
+        teamless = [] # yolo way
         Dancer.all.each do |dancer|
             if dancer.teams.length == 0
                 teamless << dancer
@@ -88,12 +92,24 @@ class Team < ActiveRecord::Base
         
         training_teams = []
         Team.where("project = ? AND locked = ?", false, false).each do |team|
-            if team.dancers.length < 15
+            if team.maximum_picks == nil
+                training_teams << team
+            elsif team.dancers.length < team.maximum_picks
                 training_teams << team
             end
         end
         
-        #WIP WIP
+        if training_teams.length > 0
+            while teamless.length > 0
+                teamless = teamless.shuffle
+                training_teams.sort! { |a,b| a.dancers.length <=> b.dancers.length }
+                training_teams[0].dancers << teamless.shift
+            end
+        end
+        
+        training_teams.each do |team|
+            team.save
+        end
         
     end
     
