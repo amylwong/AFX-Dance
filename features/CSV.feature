@@ -16,10 +16,13 @@ Background:
      | p@example.com      | password  | password              | project     | 1       |
   Given the following dancers exist:
      | casting_group_id | name      | email         | phone           | year  | gender        | conflicted  | id  |
-     |                  | Dancer1   | test@test.com | 999-999-9999    | 4     | Male          | true        | 1   |
+     | 1                 | Dancer1   | test@test.com | 999-999-9999    | 4     | Male          | true        | 1   |
   Given the following dancers_teams exist:
     | team_id | dancer_id |
-    | 1       | 1         |   
+    | 1       | 1         |
+  Given the following casting_groups exist:
+    | video											| id |
+    | https://www.youtube.com/watch?v=6FNDIz1FeE0	| 1	 |
   Then I log in as "p@example.com" with password "password"
   And I should see "Signed in successfully"
   Then I follow "Dancers"
@@ -33,7 +36,7 @@ Scenario: Testing CSV
 	Then I follow "Teams"
 	Then I follow "View"
 	Then follow "Print CSV for project1"
-	Then I should get a download with the filename "project1.csv"
+	Then I should get a download with the filename "project1_roster.csv"
 	
 
 @wip
