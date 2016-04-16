@@ -55,10 +55,10 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
-When /^(?:|I )follow2 "([^"]*)"$/ do |link|
-  click_link(link)
-  save_and_open_page
-end
+#When /^(?:|I )follow2 "([^"]*)"$/ do |link|
+#  click_link(link)
+#  save_and_open_page
+#end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select value, from: field
@@ -113,10 +113,14 @@ When /^(?:|I )check "([^"]*)"$/ do |field|
   check(field)
 end
 
-When /^(?:|I )check the checkbox with id "([^"]*)"$/ do |field|
-  find(:xpath, %{//[@id="batch_action_item_#{field}"]}).set(true)
+Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+  page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
 end
 
-When /^(?:|I )check2 "([^"]*)"$/ do |field|
-  check("batch_action_item_#{field}")
-end
+#When /^(?:|I )check the checkbox with id "([^"]*)"$/ do |field|
+#  find(:xpath, %{//[@id="batch_action_item_#{field}"]}).set(true)
+#end
+
+#When /^(?:|I )check2 "([^"]*)"$/ do |field|
+#  check("batch_action_item_#{field}")
+#end

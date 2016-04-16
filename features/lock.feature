@@ -1,4 +1,11 @@
+Feature: Locking Teams
+  As an admin
+  I want for a series of checks to be implemented
+  so that training teams cannot pick their roster until all project teams are locked in.
 
+Background:
+  
+  
 @wip
 Scenario: Training team cannot pick until after project team does
 

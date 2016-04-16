@@ -6,9 +6,9 @@ Feature: Randomization
 Background: 
   Given I am on the Admin Login Page
   Given the following dancers exist:
-     | name     | year    | gender | email           | phone        |
-     | Dancer1  | 4       | M      | test@test.com   | 999-999-9999 |
-     | Dancer2  | 4       | F      | ex@ex.com       | 888-888-8888 |
+     | name     | year    | gender  | email           | phone        |
+     | Dancer1  | 4       | Male    | test@test.com   | 999-999-9999 |
+     | Dancer2  | 4       | Female  | ex@ex.com       | 888-888-8888 |
   Given the following teams exist:
      | name     | project |
      | team1    | false   |

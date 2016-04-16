@@ -5,9 +5,9 @@ Feature: Working Admin Page
   
 Background: the admin page has some content
   Given I am on the Admin Login Page
-  Given the following dancers exist:
-     | name     | year    | gender | email           | phone        |
-     | Dancer1  | 4       | M      | test@test.com   | 999-999-9999 |
+#  Given the following dancers exist:
+#     | name     | year    | gender | email           | phone        |
+#     | Dancer1  | 4       | Male      | test@test.com   | 999-999-9999 |
   Given the following teams exist:
      | name     | project |
      | Hi       | false   |
