@@ -80,6 +80,16 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   end
 end
 
+Then(/^I should see all dancers on teams$/) do
+  has_team = true
+  Dancer.all.each do |dancer|
+    if dancer.teams.length == 0
+      has_team = false
+    end
+  end
+  has_team
+end
+
 Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
 
@@ -113,6 +123,9 @@ When /^(?:|I )check "([^"]*)"$/ do |field|
   check(field)
 end
 
+When /^(?:|I )check2 "([^"]*)"$/ do |field|
+  check("batch_action_item_#{field}")
+end
 
 #When 'I follow the view link for "$name"' do |name|
 #  with_scope("/tr[td[text() = '#{name}']]") { click_link "View" }
