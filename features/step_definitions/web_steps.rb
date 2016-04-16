@@ -113,9 +113,10 @@ When /^(?:|I )check "([^"]*)"$/ do |field|
   check(field)
 end
 
-Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
-  page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
-end
+
+#When 'I follow the view link for "$name"' do |name|
+#  with_scope("/tr[td[text() = '#{name}']]") { click_link "View" }
+#end
 
 #When /^(?:|I )check the checkbox with id "([^"]*)"$/ do |field|
 #  find(:xpath, %{//[@id="batch_action_item_#{field}"]}).set(true)
