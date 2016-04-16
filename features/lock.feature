@@ -39,7 +39,7 @@ Scenario: Training team locks in after project team
   Given I am on the Admin Login Page
   Then I log in as "t@example.com" with password "password"
   Then I follow "Teams"
-  Then I follow the view link for "/admin/teams/2"
+  Then I go to the "admin/teams/2"
   
   
   

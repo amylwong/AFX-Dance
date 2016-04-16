@@ -29,8 +29,8 @@ Background:
   Then I follow "Add to Team"
   Then I follow "Logout"
 
-@wip
-Scenario: Testing CSV
+
+Scenario: Testing CSV when everything works
 
 	Given I log in as "p@example.com" with password "password" 
 	Then I follow "Teams"
@@ -47,10 +47,9 @@ Scenario: CSV with empty team
 	Then I follow CSV
 	Then I should see "There are no dancers in your team"
 
-@wip
 Scenario: CSV without leading a team
 	Given I log in as "admin@example.com" with password "password" 
 	Then I follow "Teams"
 	Then I follow "View"
 	Then follow "Print CSV for project1"
-	Then I should get a download with the filename "project1.csv"
+	Then I should get a download with the filename "project1_roster.csv"

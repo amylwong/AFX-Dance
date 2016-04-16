@@ -32,12 +32,12 @@ end
 World(WithinHelpers)
 
 Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
-  page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+  page.response_headers['Content-Disposition'].should include("filename=#{filename}")
 end
 
-Then /^I am leading the team "([^\"]*)"$/ do |name|
-	User.team == name
-end
+#Then /^I am leading the team "([^\"]*)"$/ do |name|
+#	User.team == name
+#end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
@@ -68,9 +68,6 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
-When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
-  fill_in(field, :with => value)
-end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
