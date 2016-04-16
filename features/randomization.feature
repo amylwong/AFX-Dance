@@ -27,13 +27,14 @@ Background:
   Then I follow "Logout"  
 
 Scenario: If a dancer does not have a team, assign the dancer to a random team.
-  Given I am logged in as a Training_Director
-  When I go to the Dancers page
-  And I filter by "Unassigned"
-  Then I should see "Dancer1"
-  Then I should see "Unassigned Dancers"
-  When I press "Randomize"
-  And I filter by "Unassigned"
-  Then I should not see "Dancer1"
+  Given I am on the Admin Login Page
+  Then I log in as "admin@example.com" with password "password"
+  And I should see "Signed in successfully"
+  Then I follow "Dancers"
+  Then I check2 "1"
+  Then I follow "Batch Actions"
+  Then I should see "Final Randomization Selected"
+  Then I follow "Final Randomization Selected"
+  Then I should see all dancers on teams
 
 

@@ -48,7 +48,8 @@ Scenario: Locking roster without conflicted dancers
     |                  | Dancer1   | test@test.com | 999-999-9999    | 4     | Male          | false        | 1   |
   Given the following dancers_teams exist:
     | team_id | dancer_id |
-    | 1       | 1         |     
+    | 1       | 1         | 
+
   Given I am on the Admin Login Page
   Then I log in as "p@example.com" with password "password"
   And I should see "Signed in successfully"

@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-16T04:03:34+00:00">2016-04-16T04:03:34+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-16T06:03:58+00:00">2016-04-16T06:03:58+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.67
+         0.72
        </span>
     </span> hits/line)
   </h2>
@@ -87,7 +87,7 @@
         <td>14</td>
         <td>8</td>
         <td>6</td>
-        <td>0.9</td>
+        <td>1.6</td>
       </tr>
       
       <tr>
@@ -123,7 +123,7 @@
       <tr>
         <td class="strong"><a href="#a927e7c81f062f1104ed8d1b11bf1a1bd895a00c" class="src_link" title="app/models/team.rb">app/models/team.rb</a></td>
         <td class="red strong">15.94 %</td>
-        <td>116</td>
+        <td>117</td>
         <td>69</td>
         <td>11</td>
         <td>58</td>
@@ -634,20 +634,20 @@
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="6">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="6">
+          <span class="hits">4</span>
           
           <code class="ruby">    alias_action :create, :read, :update, :destroy, :to =&gt; :board</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="7">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="7">
+          <span class="hits">4</span>
           
           <code class="ruby">    alias_action :read, :to =&gt; :project</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="8">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="8">
+          <span class="hits">4</span>
           
           <code class="ruby">    alias_action :read, :to =&gt; :training </code>
         </li>
@@ -658,14 +658,14 @@
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="10">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="10">
+          <span class="hits">4</span>
           
           <code class="ruby">    if user.admin_type == &quot;admin&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="11">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="11">
+          <span class="hits">4</span>
           
           <code class="ruby">      can :manage, :all</code>
         </li>
@@ -1762,187 +1762,193 @@
           <code class="ruby">    def self.final_randomization</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
-          <code class="ruby">        teamless = [] # yolo way</code>
+          <code class="ruby">        </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="87">
           
           
-          <code class="ruby">        Dancer.all.each do |dancer|</code>
+          <code class="ruby">        teamless = [] # yolo way</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="88">
           
           
-          <code class="ruby">            if dancer.teams.length == 0</code>
+          <code class="ruby">        Dancer.all.each do |dancer|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="89">
           
           
-          <code class="ruby">                teamless &lt;&lt; dancer</code>
+          <code class="ruby">            if dancer.teams.length == 0</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="missed" data-hits="0" data-linenumber="90">
           
           
-          <code class="ruby">            end</code>
+          <code class="ruby">                teamless &lt;&lt; dancer</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="91">
           
           
-          <code class="ruby">        end</code>
+          <code class="ruby">            end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="92">
           
           
-          <code class="ruby">        </code>
+          <code class="ruby">        end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="93">
+        <li class="never" data-hits="" data-linenumber="93">
           
           
-          <code class="ruby">        training_teams = []</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="94">
           
           
-          <code class="ruby">        Team.where(&quot;project = ? AND locked = ?&quot;, false, false).each do |team|</code>
+          <code class="ruby">        training_teams = []</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="95">
           
           
-          <code class="ruby">            if team.maximum_picks == nil</code>
+          <code class="ruby">        Team.where(&quot;project = ? AND locked = ?&quot;, false, false).each do |team|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="96">
           
           
+          <code class="ruby">            if team.maximum_picks == nil</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="97">
+          
+          
           <code class="ruby">                training_teams &lt;&lt; team</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="97">
+        <li class="never" data-hits="" data-linenumber="98">
           
           
           <code class="ruby">            elsif team.dancers.length &lt; team.maximum_picks</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="98">
+        <li class="missed" data-hits="0" data-linenumber="99">
           
           
           <code class="ruby">                training_teams &lt;&lt; team</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="99">
-          
-          
-          <code class="ruby">            end</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="100">
           
           
-          <code class="ruby">        end</code>
+          <code class="ruby">            end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="101">
           
           
-          <code class="ruby">        </code>
+          <code class="ruby">        end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="102">
+        <li class="never" data-hits="" data-linenumber="102">
           
           
-          <code class="ruby">        if training_teams.length &gt; 0</code>
+          <code class="ruby">        </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="103">
           
           
-          <code class="ruby">            while teamless.length &gt; 0</code>
+          <code class="ruby">        if training_teams.length &gt; 0</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="104">
           
           
-          <code class="ruby">                teamless = teamless.shuffle</code>
+          <code class="ruby">            while teamless.length &gt; 0</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="105">
           
           
-          <code class="ruby">                training_teams.sort! { |a,b| a.dancers.length &lt;=&gt; b.dancers.length }</code>
+          <code class="ruby">                teamless = teamless.shuffle</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="106">
           
           
-          <code class="ruby">                training_teams[0].dancers &lt;&lt; teamless.shift</code>
+          <code class="ruby">                training_teams.sort! { |a,b| a.dancers.length &lt;=&gt; b.dancers.length }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="107">
+        <li class="missed" data-hits="0" data-linenumber="107">
           
           
-          <code class="ruby">            end</code>
+          <code class="ruby">                training_teams[0].dancers &lt;&lt; teamless.shift</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="108">
           
           
-          <code class="ruby">        end</code>
+          <code class="ruby">            end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="109">
           
           
-          <code class="ruby">        </code>
+          <code class="ruby">        end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="110">
+        <li class="never" data-hits="" data-linenumber="110">
           
           
-          <code class="ruby">        training_teams.each do |team|</code>
+          <code class="ruby">        </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="111">
           
           
-          <code class="ruby">            team.save</code>
+          <code class="ruby">        training_teams.each do |team|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="112">
+        <li class="missed" data-hits="0" data-linenumber="112">
           
           
-          <code class="ruby">        end</code>
+          <code class="ruby">            team.save</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="113">
           
           
-          <code class="ruby">        </code>
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="114">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">        </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="115">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="116">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
           
           
           <code class="ruby">end</code>
