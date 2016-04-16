@@ -12,7 +12,7 @@ Background: Users of all admin_type exist
      | b@example.com     | password  | password              | board        |         |
 
 
-Scenario: Permissions for training
+Scenario: Permissions for training team director
   Given I log in as "t@example.com" with password "password"
   And I should see "Signed in successfully"
   Then I follow "Dancers"
