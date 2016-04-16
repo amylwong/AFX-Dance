@@ -26,7 +26,6 @@ Background:
   Given I am on the Admin Page                                   
   Then I follow "Logout"  
 
-@wip
 Scenario: If a dancer does not have a team, assign the dancer to a random team.
   Given I am logged in as a Training_Director
   When I go to the Dancers page

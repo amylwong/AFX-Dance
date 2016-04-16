@@ -83,13 +83,14 @@ class Team < ActiveRecord::Base
     end
     
     def self.final_randomization
+        
         teamless = [] # yolo way
         Dancer.all.each do |dancer|
             if dancer.teams.length == 0
                 teamless << dancer
             end
         end
-        
+
         training_teams = []
         Team.where("project = ? AND locked = ?", false, false).each do |team|
             if team.maximum_picks == nil

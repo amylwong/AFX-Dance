@@ -14,14 +14,17 @@ ActiveAdmin.register Dancer do
     #   permitted << :other if resource.something?
     #   permitted
     # end
+    
     member_action :add_to_my_team, :method => :post do
         ids = params[:id]
         add_helper(ids, current_admin_user)
     end
+    
     member_action :remove_from_my_team, :method => :post do
         ids = params[:id]
         remove_helper(ids, current_admin_user)
     end
+    
     form do |f|
         f.inputs do
             f.input :casting_group, member_label: Proc.new { |c| "#{c.id}" }
@@ -35,6 +38,7 @@ ActiveAdmin.register Dancer do
     end
     
     controller do
+        
         def add_helper(ids, current_admin_user)
             if current_admin_user.team == nil
                 redirect_to '/admin/dancers', :alert => "your account is not associated with a team"
@@ -82,10 +86,12 @@ ActiveAdmin.register Dancer do
     
     batch_action :final_randomization do |ids|
         if Team.project_teams_done
+            puts "PROJECT TEAMS DONE"
             Team.final_randomization
             redirect_to '/admin/dancers'
         else
-            redirect_to '/admin/dancers', :alert => "You cannot do that right now, project teams are still picking"
+            puts "PROJECT TEAMS NOT DONE"
+            redirect_to '/admin/dancers'
         end
     end
     
