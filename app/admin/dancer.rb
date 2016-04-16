@@ -61,6 +61,15 @@ ActiveAdmin.register Dancer do
         end
     end
     
+    batch_action :final_randomization do |ids|
+        if Team.project_teams_done
+            Team.final_randomization
+            redirect_to '/admin/dancers'
+        else
+            redirect_to '/admin/dancers', :alert => "You cannot do that right now, project teams are still picking"
+        end
+    end
+    
     index do
         selectable_column
         column :id

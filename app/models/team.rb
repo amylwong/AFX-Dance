@@ -74,6 +74,14 @@ class Team < ActiveRecord::Base
         return removed
     end
     
+    def self.project_teams_done
+        if Team.where("project = ? AND locked = ?", true, false).length > 0
+            return false
+        else
+            return true
+        end
+    end
+    
     def self.final_randomization
         teamless = [] # yolo way
         Dancer.all.each do |dancer|
