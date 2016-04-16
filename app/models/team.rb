@@ -94,7 +94,6 @@ class Team < ActiveRecord::Base
         if training_teams.length > 0
             while teamless.length > 0
                 teamless = teamless.shuffle
-                @users.sort! { |a,b| a.name.downcase <=> b.name.downcase }
                 training_teams.sort! { |a,b| a.dancers.length <=> b.dancers.length }
                 training_teams[0].dancers << teamless.shift
             end
