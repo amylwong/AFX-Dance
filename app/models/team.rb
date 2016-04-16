@@ -44,7 +44,7 @@ class Team < ActiveRecord::Base
     
     def add_dancers(ids)
         added = []
-        Dancer.find(ids).each do |id|
+        Dancer.find(Array(ids)).each do |id|
             if not id.teams.include? self
                 id.teams << self
                 if id.teams.length > 2
@@ -59,7 +59,7 @@ class Team < ActiveRecord::Base
     
     def remove_dancers(ids)
         removed = []
-        Dancer.find(ids).each do |id|
+        Dancer.find(Array(ids)).each do |id|
             if id.teams.include? self
                 self.dancers.delete(id)
                 self.save
