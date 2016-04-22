@@ -32,12 +32,12 @@ end
 World(WithinHelpers)
 
 Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
-   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+  page.response_headers['Content-Disposition'].should include("filename=#{filename}")
 end
 
-Then /^I am leading the team "([^\"]*)"$/ do |name|
-	User.team == name
-end
+#Then /^I am leading the team "([^\"]*)"$/ do |name|
+#	User.team == name
+#end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
@@ -55,6 +55,11 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+#When /^(?:|I )follow2 "([^"]*)"$/ do |link|
+#  click_link(link)
+#  save_and_open_page
+#end
+
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select value, from: field
 end
@@ -63,9 +68,6 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
-When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
-  fill_in(field, :with => value)
-end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
@@ -75,6 +77,16 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   end
 end
 
+Then(/^I should see all dancers on teams$/) do
+  has_team = true
+  Dancer.all.each do |dancer|
+    if dancer.teams.length == 0
+      has_team = false
+    end
+  end
+  has_team
+end
+
 Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
 
@@ -82,6 +94,16 @@ Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
     page.should have_xpath('//*', :text => regexp)
   else
     assert page.has_xpath?('//*', :text => regexp)
+  end
+end
+
+Then(/^I should not see "(.*?)"$/) do |regexp|
+  regexp = Regexp.new(regexp)
+
+  if page.respond_to? :should
+    page.should have_no_xpath('//*', :text => regexp)
+  else
+    assert page.has_no_xpath?('//*', :text => regexp)
   end
 end
 
@@ -96,4 +118,33 @@ end
 
 When /^(?:|I )check "([^"]*)"$/ do |field|
   check(field)
+end
+
+When /^(?:|I )check2 "([^"]*)"$/ do |field|
+  check("batch_action_item_#{field}")
+end
+
+#When 'I follow the view link for "$name"' do |name|
+#  with_scope("/tr[td[text() = '#{name}']]") { click_link "View" }
+#end
+
+#When /^(?:|I )check the checkbox with id "([^"]*)"$/ do |field|
+#  find(:xpath, %{//[@id="batch_action_item_#{field}"]}).set(true)
+#end
+
+#When /^(?:|I )check2 "([^"]*)"$/ do |field|
+#  check("batch_action_item_#{field}")
+#end
+
+When /^(?:|I )follow "([^"]*)" for team "([^"]*)"$/ do |link, team|
+  page.find_by_id("#{team}").click_link(link)
+end
+
+
+Then /^(?:|I )follow "([^"]*)" for dancer "([^"]*)"$/ do |link, dancer|
+  page.find_by_id("#{dancer}").click_link(link)
+end
+
+When /^(?:|I )select a dancer "([^"]*)"$/ do |dancer|
+  page.find('td', :text => "#{dancer}").click()
 end

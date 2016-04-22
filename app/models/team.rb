@@ -25,7 +25,9 @@ class Team < ActiveRecord::Base
     end
     
     def can_add(num)
-        if self.dancers.length + num > self.maximum_picks
+        if self.maximum_picks == nil
+            return true
+        elsif self.dancers.length + num > self.maximum_picks
             return false
         else
             return true
@@ -42,7 +44,7 @@ class Team < ActiveRecord::Base
     
     def add_dancers(ids)
         added = []
-        Dancer.find(ids).each do |id|
+        Dancer.find(Array(ids)).each do |id|
             if not id.teams.include? self
                 id.teams << self
                 if id.teams.length > 2
@@ -57,7 +59,7 @@ class Team < ActiveRecord::Base
     
     def remove_dancers(ids)
         removed = []
-        Dancer.find(ids).each do |id|
+        Dancer.find(Array(ids)).each do |id|
             if id.teams.include? self
                 self.dancers.delete(id)
                 self.save
@@ -72,26 +74,43 @@ class Team < ActiveRecord::Base
         return removed
     end
     
+    def self.project_teams_done
+        if Team.where("project = ? AND locked = ?", true, false).length > 0
+            return false
+        else
+            return true
+        end
+    end
+    
     def self.final_randomization
-        # get all dancers without a team
-        # get all training teams
-        # randomly assign each dancer to a training team, and then save all
-        teamless = []
-        # yolo way
+        
+        teamless = [] # yolo way
         Dancer.all.each do |dancer|
             if dancer.teams.length == 0
                 teamless << dancer
             end
         end
-        
+
         training_teams = []
         Team.where("project = ? AND locked = ?", false, false).each do |team|
-            if team.dancers.length < 15
+            if team.maximum_picks == nil
+                training_teams << team
+            elsif team.dancers.length < team.maximum_picks
                 training_teams << team
             end
         end
         
-        #WIP WIP
+        if training_teams.length > 0
+            while teamless.length > 0
+                teamless = teamless.shuffle
+                training_teams.sort! { |a,b| a.dancers.length <=> b.dancers.length }
+                training_teams[0].dancers << teamless.shift
+            end
+        end
+        
+        training_teams.each do |team|
+            team.save
+        end
         
     end
     

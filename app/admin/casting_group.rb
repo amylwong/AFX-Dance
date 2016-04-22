@@ -24,6 +24,7 @@ ActiveAdmin.register CastingGroup do
         
         def update
             casting_group = CastingGroup.find(params[:id])
+            casting_group.video = params[:casting_group][:video]
             # this is to clear current dancers, lmao
             for dancer in casting_group.dancers
                 dancer.casting_group = nil
@@ -37,6 +38,7 @@ ActiveAdmin.register CastingGroup do
                 dancer.save
                 member_ids.delete(dancer.id.to_s)
             end
+            casting_group.save
             if member_ids.length != 0
                 redirect_to "/admin/casting_groups/#{casting_group.id}", :alert => "The following dancers were not added to the casting group: " + member_ids.to_s
             else
@@ -45,11 +47,44 @@ ActiveAdmin.register CastingGroup do
         end
     end
     
+    
+    index do
+        selectable_column
+        column :id
+        column :dancers do |cg|
+            cg.dancers.each.collect { |item| item.name }.join(", ") 
+        end
+        column :dancer_ids do |cg|
+            cg.dancers.each.collect { |item| item.id }.join(", ")
+        end
+        column :video
+        actions
+    end
+    
+    
     show do |user|
         casting_group = CastingGroup.find(params[:id])
-        attributes_table *default_attribute_table_rows
-        panel "Audition Video" do
-            text_node link_to(casting_group.video, casting_group.video, method: :get).html_safe
+        panel "Details" do
+            attributes_table_for user do
+                row :dancers do
+                    casting_group.dancers.each.collect { |item| item.name }.join(", ") 
+                end
+                row :dancer_ids do
+                    casting_group.dancers.each.collect { |item| item.id }.join(", ")
+                end
+                row :casting_link do
+                    text_node link_to(casting_group.video, casting_group.video, method: :get).html_safe
+                end
+                row :casting_video do |dancer|
+                    regex = /^(?:https?:\/\/)?(?:www\.)?\w*\.\w*\/(?:watch\?v=)?((?:p\/)?[\w\-]+)/
+                    parse = casting_group.video.match(regex)
+                    parse_link = 'Embed Failed'
+                    if parse
+                      parse_link = parse[1]
+                      text_node %{<iframe src="https://www.youtube.com/embed/#{parse_link}" width="640" height="480" scrolling="no" frameborder="no"></iframe>}.html_safe
+                    end
+                end
+            end
         end
         panel "Dancers" do 
             attributes_table_for user do
@@ -91,6 +126,13 @@ ActiveAdmin.register CastingGroup do
             end
         end
         f.actions
+    end
+    
+    csv do
+        column(:casting_group) { |casting_group| casting_group.id }
+        column(:dancers) { |casting_group| casting_group.dancers.each.collect { |item| item.name }.join(", ") }
+        column(:dancers_ids) { |casting_group| casting_group.dancers.each.collect { |item| item.id }.join(", ") }
+        column(:video) { |casting_group| casting_group.video}
     end
     
 end

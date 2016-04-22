@@ -21,6 +21,25 @@ ActiveAdmin.register Team do
         end
     end
 
+    collection_action :roster_csv, :method => :get do
+        current_team = Team.find(params[:id])
+        csv = CSV.generate( encoding: 'Windows-1251' ) do |csv|
+            #Header
+            csv << [ "Casting Number", "Name", "Phone Number", "Email", "Gender", "Year", "Casting Group", "Team Offers"]
+            #Data
+            current_team.dancers.each do |dancer|
+                if dancer.casting_group
+                    casting_id = dancer.casting_group.id
+                else
+                    casting_id = nil
+                end
+                csv << [dancer.id, dancer.name, dancer.phone, dancer.email, dancer.gender, dancer.year, casting_id, dancer.teams.each.collect { |item| item.name }.join(", ")]
+            end
+        end
+        send_data csv.encode('Windows-1251'), type: 'text/csv; charset=windows-1251; header=present', disposition: "attachment; filename=#{current_team.name}_roster.csv"
+        #redirect_to "/admin/teams/#{params[:id]}"
+    end
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -59,6 +78,21 @@ ActiveAdmin.register Team do
                 row :team_size do
                     current_team.dancers.all.length
                 end
+                row :gender_ratio do
+                    male = 0
+                    female = 0
+                    current_team.dancers.each do |dancer|
+                        if dancer.gender == "Male"
+                            male = male + 1
+                        else
+                            female = female + 1
+                        end
+                    end
+                    "Males: #{male} / Females: #{female}"
+                end
+                row :csv do
+                    link_to "Print CSV for #{current_team.name}", params.merge(:action => :roster_csv)
+                end
                 row :maximum_picks do
                     current_team.maximum_picks
                 end
@@ -70,7 +104,7 @@ ActiveAdmin.register Team do
             attributes_table_for user do
                 current_team.admin_users.each do |admin|
                     row admin.email do
-                        link_to('See Admin', "admin/admin_users/#{admin.id}")
+                        admin.names
                     end
                 end
             end
@@ -86,6 +120,14 @@ ActiveAdmin.register Team do
             end 
         end
         active_admin_comments
+    end
+    
+    index do
+        selectable_column
+        column :name
+        column :project
+        column :locked
+        actions
     end
     
     form do |f|
