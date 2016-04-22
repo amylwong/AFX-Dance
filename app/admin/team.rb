@@ -28,7 +28,12 @@ ActiveAdmin.register Team do
             csv << [ "Casting Number", "Name", "Phone Number", "Email", "Gender", "Year", "Casting Group", "Team Offers"]
             #Data
             current_team.dancers.each do |dancer|
-                csv << [dancer.id, dancer.name, dancer.phone, dancer.email, dancer.gender, dancer.year, dancer.casting_group.id, dancer.teams.each.collect { |item| item.name }.join(", ")]
+                if dancer.casting_group
+                    casting_id = dancer.casting_group.id
+                else
+                    casting_id = nil
+                end
+                csv << [dancer.id, dancer.name, dancer.phone, dancer.email, dancer.gender, dancer.year, casting_id, dancer.teams.each.collect { |item| item.name }.join(", ")]
             end
         end
         send_data csv.encode('Windows-1251'), type: 'text/csv; charset=windows-1251; header=present', disposition: "attachment; filename=#{current_team.name}_roster.csv"

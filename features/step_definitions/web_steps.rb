@@ -135,3 +135,16 @@ end
 #When /^(?:|I )check2 "([^"]*)"$/ do |field|
 #  check("batch_action_item_#{field}")
 #end
+
+When /^(?:|I )follow "([^"]*)" for team "([^"]*)"$/ do |link, team|
+  page.find_by_id("#{team}").click_link(link)
+end
+
+
+Then /^(?:|I )follow "([^"]*)" for dancer "([^"]*)"$/ do |link, dancer|
+  page.find_by_id("#{dancer}").click_link(link)
+end
+
+When /^(?:|I )select a dancer "([^"]*)"$/ do |dancer|
+  page.find('td', :text => "#{dancer}").click()
+end
