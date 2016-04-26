@@ -8,6 +8,7 @@ class AuditionFormController < ApplicationController
     def create_dancer
         @dancer = Dancer.new(dancer_params)
         if @dancer.save
+            @name = @dancer.name
             @audition_num = @dancer.id.to_s
             render "audition_form/number"
         else
