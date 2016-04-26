@@ -1,5 +1,5 @@
 #audition-form-body {
-    background: #d2d2d2;
+    background: url('/assets/blurred-bg.jpg') no-repeat center center fixed;
     vertical-align: middle;
     text-align: center;
 }
@@ -9,17 +9,18 @@
     width: 500px;
     padding: 30px;
     background: #fff;
+    opacity: 0.7;
     margin: 50px auto;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 30px rgba(0, 0, 0, 0.22);
 
 }
 .audition-form h2{
     background: #4D4D4D;
     text-transform: uppercase;
     font-family: 'Open Sans Condensed', sans-serif;
-    color: #797979;
+    color: #fff;
     font-size: 38px;
     font-weight: bold;
     padding: 20px;
@@ -58,8 +59,9 @@
 .audition-form input[type="button"], 
 .audition-form input[type="submit"]{
     -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
-    background-color: #2CBBBB;
-    border: 1px solid #27A0A0;
+    background-color: #000000 !important;
+    opacity: 0.8;
+    border: 1px solid #808080;
     border-radius: 0px;
     display: inline-block;
     cursor: pointer;

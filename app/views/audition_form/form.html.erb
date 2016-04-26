@@ -7,9 +7,9 @@
         <% end %>
     <% end %>
 
-    <%= f.text_field :name, placeholder: "NAME" %><br>
-    <%= f.text_field :email, placeholder: "EMAIL" %><br>
-    <%= f.text_field :phone, placeholder: "PHONE" %><br>
+    <%= f.text_field :name, required: true, placeholder: "NAME" %><br>
+    <%= f.text_field :email, required: true, placeholder: "EMAIL" %><br>
+    <%= f.text_field :phone, required: true, placeholder: "PHONE" %><br>
     <%= f.select :gender, options_for_select(['Male', 'Female']), prompt: "GENDER" %><br>
     <%= f.select :year, options_for_select(['1', '2', '3', '4', 'Other']), prompt: "YEAR" %><br>
     <%= f.submit "I'm ready to audition!" %>
