@@ -5,6 +5,16 @@ body,
     text-align: center;
 }
 
+h2 {
+    background: #4D4D4D;
+    opacity: 0.7;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #fff;
+    font-size: 38px;
+    padding: 20px;
+    margin: -30px -30px 30px -30px;
+}
+
 .audition-form{
     font-family: 'Open Sans Condensed', arial, sans;
     width: 500px;
