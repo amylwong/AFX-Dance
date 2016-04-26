@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
+  #homepage_controller
+  get '/home', to: 'homepage#index'
+  
   # audition_form_controller
   get '/auditionform', to: 'audition_form#index'
   post '/auditionform', to: 'audition_form#create_dancer', as: "audition_form"
