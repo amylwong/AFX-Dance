@@ -1,0 +1,59 @@
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+.mynav{
+    background: white;
+    color: black;
+    height:55px;
+}
+
+
+.mynav .mylogo{
+    color:#000080;
+    font-size: 20px;
+}
+
+.btn{
+    margin-top:-5px;
+}
+
+.login{
+    background: #4b5b72;
+    color:white;
+    border-radius: 0;
+}
+
+
+.panel1{
+    background: #fff url(/assets/dance1.jpg) center top fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+	padding: 40vh 20px 40vh 20px;
+	width: 100%;
+	margin-top: -10px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	color:white;
+}
+
+.panel1 h1{
+    font-size: 50px;
+}
+
+.home-btn{
+    padding:10px 20px 10px 20px;
+    background:white;
+    border-radius: 0;
+    color:black;
+}
+
+.panel2{
+    padding: 100px 50px 100px 50px;
+    background: white;
+}
