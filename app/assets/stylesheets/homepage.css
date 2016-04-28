@@ -30,7 +30,7 @@ a:visited {
 
 
 .panel1{
-    background: #fff url(/assets/dance1.jpg) center top fixed;
+    background: #fff url('/assets/dance1.jpg') center top fixed;
     background-repeat:no-repeat;
     background-size: cover;
 	padding: 40vh 20px 40vh 20px;
@@ -56,4 +56,14 @@ a:visited {
 .panel2{
     padding: 100px 50px 100px 50px;
     background: white;
+}
+
+.panel2 h3{
+    font-size: 50px;
+    background: none;
+    box-shadow: none;
+    color: black;
+    margin: 0px;
+    padding: 0;
+    width: 0px;
 }
