@@ -30,7 +30,7 @@ a:visited {
 
 
 .panel1{
-    background: #fff url('/assets/dance1.jpg') center top fixed;
+    background: #fff url("dance1.jpg") center top fixed;
     background-repeat:no-repeat;
     background-size: cover;
 	padding: 40vh 20px 40vh 20px;
