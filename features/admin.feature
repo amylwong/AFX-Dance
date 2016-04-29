@@ -21,7 +21,7 @@ Background: the admin page has some content
   Then I follow "Audition Form"
   And I should see "AFX AUDITIONS"
   And I fill in "dancer[name]" with "Dancer1"
-  And I select "4" from "dancer[year]"
+  And I select "Senior or older" from "dancer[year]"
   And I select "Male" from "dancer[gender]"
   And I fill in "dancer[email]" with "email@email.com"           
   And I fill in "dancer[phone]" with "999-999-9999"              
@@ -47,12 +47,12 @@ Scenario: I should be able to see Audition Form as an Admin
   Then I follow "Audition Form"                                  
   And I should see "AFX AUDITIONS"                               
   And I fill in "dancer[name]" with "Name"   
-  And I select "4" from "dancer[year]"
+  And I select "Senior or older" from "dancer[year]"
   And I select "Male" from "dancer[gender]"
   And I fill in "dancer[email]" with "email@email.com"           
   And I fill in "dancer[phone]" with "999-999-9999"              
   Then I press "I'm ready to audition!"                          
-  Then I should see "Your audition number is"                    
+  Then I should see "your audition number is"                    
 
 Scenario: I should see registered dancers as an Admin            
   Given I log in as "admin@example.com" with password "password" 

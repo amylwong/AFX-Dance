@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   
   #homepage_controller
   root 'homepage#index'
-  #get '/home', to: 'homepage#index'
   
   # audition_form_controller
   get '/auditionform', to: 'audition_form#index'
