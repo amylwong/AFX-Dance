@@ -187,6 +187,17 @@ ActiveAdmin.register Dancer do
         column(:year) { |dancer| dancer.year }
         column(:gender) { |dancer| dancer.gender }
         column(:teams) { |dancer| dancer.teams.each.collect { |item| item.name }.join(", ") }
+    
     end
     
+    #scope("Available"){|scope| scope.where(available:true)}
+    scope :all, default: true
+    scope("Conflicted"){|scope| scope.where(conflicted:true)}
+    
+    filter :conflicted, as: :check_boxes
+    filter :name
+    filter :id
+    filter :teams
+    
+    config.per_page = 15
 end

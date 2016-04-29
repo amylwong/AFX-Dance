@@ -125,6 +125,13 @@ ActiveAdmin.register Team do
     index do
         selectable_column
         column :name
+        column :directors do |team|
+            wauw = ""
+            team.admin_users.each do |a|
+                wauw << a.names
+            end
+            wauw
+        end
         column :project
         column :locked
         actions
@@ -144,4 +151,8 @@ ActiveAdmin.register Team do
         column(:team) { |team| team.name }
         column(:dancers) { |team| team.dancers.collect(&:name).join(", ") }
     end
+    
+    filter :name
+    filter :locked
+    config.per_page = 15
 end

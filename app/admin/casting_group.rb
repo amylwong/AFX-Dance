@@ -134,5 +134,10 @@ ActiveAdmin.register CastingGroup do
         column(:dancers_ids) { |casting_group| casting_group.dancers.each.collect { |item| item.id }.join(", ") }
         column(:video) { |casting_group| casting_group.video}
     end
+   
+   
+    filter :id, label: 'Casting Group Number'
     
+   
+   config.per_page = 15 
 end

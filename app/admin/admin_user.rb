@@ -12,12 +12,6 @@ ActiveAdmin.register AdminUser do
     actions
   end
 
-  filter :email
-  filter :admin_type
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
-
   form do |f|
     f.inputs "Admin Details" do
       f.input :email
@@ -31,7 +25,13 @@ ActiveAdmin.register AdminUser do
   end
   
   show do
-    attributes_table *default_attribute_table_rows
+    panel "Details" do 
+      attributes_table_for admin_user do
+        row :admin_type
+        row :names
+      end
+    end
+    
     panel "Team" do
       attributes_table_for admin_user.team do
         row :name
@@ -40,5 +40,10 @@ ActiveAdmin.register AdminUser do
     end
     active_admin_comments
   end
+  
+  filter :admin_type
+  filter :names
+  
+  config.per_page = 15
 
 end
