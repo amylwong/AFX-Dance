@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.10.0/application.js' type='text/javascript'></script>    
     <link href='./assets/0.10.0/application.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_red.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_yellow.png" />
     <link rel="icon" type="image/png" href="./assets/0.10.0/favicon.png" />
   </head>
   
@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-29T09:34:24+00:00">2016-04-29T09:34:24+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-29T09:40:34+00:00">2016-04-29T09:40:34+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">62.73%</span></span>
+    (<span class="covered_percent"><span class="yellow">85.94%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="red">
-         0.65
+       <span class="green">
+         6.58
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>23</b> files in total.
-    <b>161</b> relevant lines. 
-    <span class="green"><b>101</b> lines covered</span> and
-    <span class="red"><b>60</b> lines missed </span>
+    <b>26</b> files in total.
+    <b>192</b> relevant lines. 
+    <span class="green"><b>165</b> lines covered</span> and
+    <span class="red"><b>27</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -58,6 +58,26 @@
         <td>4</td>
         <td>2</td>
         <td>0.7</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#c370bc81654ac44dbc68323ae8fb811ac4e37cb3" class="src_link" title="app/controllers/audition_form_controller.rb">app/controllers/audition_form_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>25</td>
+        <td>14</td>
+        <td>14</td>
+        <td>0</td>
+        <td>7.1</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#bee28d608ed8cf1b747b1b2e6cba18f38e580cc8" class="src_link" title="app/controllers/homepage_controller.rb">app/controllers/homepage_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>5</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -88,6 +108,16 @@
         <td>1</td>
         <td>0</td>
         <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#45ee46f6daac111e2092ae94749e92f7331b27ea" class="src_link" title="app/models/ability.rb">app/models/ability.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>47</td>
+        <td>14</td>
+        <td>14</td>
+        <td>0</td>
+        <td>67.1</td>
       </tr>
       
       <tr>
@@ -122,12 +152,12 @@
       
       <tr>
         <td class="strong"><a href="#a927e7c81f062f1104ed8d1b11bf1a1bd895a00c" class="src_link" title="app/models/team.rb">app/models/team.rb</a></td>
-        <td class="red strong">15.94 %</td>
+        <td class="red strong">63.77 %</td>
         <td>117</td>
         <td>69</td>
-        <td>11</td>
-        <td>58</td>
-        <td>0.2</td>
+        <td>44</td>
+        <td>25</td>
+        <td>1.9</td>
       </tr>
       
       <tr>
@@ -398,6 +428,222 @@
   </pre>
 </div>
       
+        <div class="source_table" id="c370bc81654ac44dbc68323ae8fb811ac4e37cb3">
+  <div class="header">
+    <h3>app/controllers/audition_form_controller.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>14</b> relevant lines. 
+      <span class="green"><b>14</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class AuditionFormController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def index</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="4">
+          <span class="hits">12</span>
+          
+          <code class="ruby">        @dancer = Dancer.new</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="5">
+          <span class="hits">12</span>
+          
+          <code class="ruby">        render &#39;audition_form/form&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def create_dancer</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="9">
+          <span class="hits">12</span>
+          
+          <code class="ruby">        @dancer = Dancer.new(dancer_params)</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="10">
+          <span class="hits">12</span>
+          
+          <code class="ruby">        if @dancer.save</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="11">
+          <span class="hits">11</span>
+          
+          <code class="ruby">            @name = @dancer.name</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="12">
+          <span class="hits">11</span>
+          
+          <code class="ruby">            @audition_num = @dancer.id.to_s</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="13">
+          <span class="hits">11</span>
+          
+          <code class="ruby">            render &quot;audition_form/number&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">        else</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">            render &quot;audition_form/form&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def dancer_params</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="22">
+          <span class="hits">12</span>
+          
+          <code class="ruby">        params.require(:dancer).permit(:name, :year, :gender, :email, :phone)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby">        </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="bee28d608ed8cf1b747b1b2e6cba18f38e580cc8">
+  <div class="header">
+    <h3>app/controllers/homepage_controller.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>3</b> relevant lines. 
+      <span class="green"><b>3</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class HomepageController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def index</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        render &quot;homepage/home&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
         <div class="source_table" id="d43827b5a63793267a985a8ac0944228ee17c792">
   <div class="header">
     <h3>app/helpers/application_helper.rb</h3>
@@ -479,6 +725,306 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="45ee46f6daac111e2092ae94749e92f7331b27ea">
+  <div class="header">
+    <h3>app/models/ability.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>14</b> relevant lines. 
+      <span class="green"><b>14</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class Ability</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  include CanCan::Ability</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def initialize(user)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="160" data-linenumber="6">
+          <span class="hits">160</span>
+          
+          <code class="ruby">    alias_action :create, :read, :update, :destroy, :to =&gt; :board</code>
+        </li>
+      
+        <li class="covered" data-hits="160" data-linenumber="7">
+          <span class="hits">160</span>
+          
+          <code class="ruby">    alias_action :read, :to =&gt; :project</code>
+        </li>
+      
+        <li class="covered" data-hits="160" data-linenumber="8">
+          <span class="hits">160</span>
+          
+          <code class="ruby">    alias_action :read, :to =&gt; :training </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="160" data-linenumber="10">
+          <span class="hits">160</span>
+          
+          <code class="ruby">    if user.admin_type == &quot;admin&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="92" data-linenumber="11">
+          <span class="hits">92</span>
+          
+          <code class="ruby">      can :manage, :all</code>
+        </li>
+      
+        <li class="covered" data-hits="68" data-linenumber="12">
+          <span class="hits">68</span>
+          
+          <code class="ruby">    elsif user.admin_type == &quot;board&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="13">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      can :board, :all</code>
+        </li>
+      
+        <li class="covered" data-hits="63" data-linenumber="14">
+          <span class="hits">63</span>
+          
+          <code class="ruby">    elsif user.admin_type == &quot;project&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="58" data-linenumber="15">
+          <span class="hits">58</span>
+          
+          <code class="ruby">      can :project, :all</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="16">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    elsif user.admin_type == &quot;training&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="17">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      can :training, :all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby">    # Define abilities for the passed in user here. For example:</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">    #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">    #   user ||= User.new # guest user (not logged in)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby">    #   if user.admin?</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby">    #     can :manage, :all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">    #   else</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
+          <code class="ruby">    #     can :read, :all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">    #   end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby">    #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby">    # The first argument to `can` is the action you are giving the user </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby">    # permission to do.</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">    # If you pass :manage it will apply to every action. Other common actions</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby">    # here are :read, :create, :update and :destroy.</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">    #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">    # The second argument is the resource the user can perform the action on. </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby">    # If you pass :all it will apply to every resource. Otherwise pass a Ruby</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">    # class of the resource.</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">    #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">    # The third argument is an optional hash of conditions to further filter the</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">    # objects.</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">    # For example, here the user can only update published articles.</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">    #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">    #   can :update, Article, :published =&gt; true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">    #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="44">
+          
+          
+          <code class="ruby">    # See the wiki for details:</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="45">
+          
+          
+          <code class="ruby">    # https://github.com/ryanb/cancan/wiki/Defining-Abilities</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
           
           
           <code class="ruby">end</code>
@@ -815,11 +1361,11 @@
         <div class="source_table" id="a927e7c81f062f1104ed8d1b11bf1a1bd895a00c">
   <div class="header">
     <h3>app/models/team.rb</h3>
-    <h4><span class="red">15.94 %</span> covered</h4>
+    <h4><span class="red">63.77 %</span> covered</h4>
     <div>
       <b>69</b> relevant lines. 
-      <span class="green"><b>11</b> lines covered</span> and
-      <span class="red"><b>58</b> lines missed.</span>
+      <span class="green"><b>44</b> lines covered</span> and
+      <span class="red"><b>25</b> lines missed.</span>
     </div>
   </div>
   
@@ -862,32 +1408,32 @@
           <code class="ruby">    def has_conflicted_dancers</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="7">
-          
+        <li class="covered" data-hits="5" data-linenumber="7">
+          <span class="hits">5</span>
           
           <code class="ruby">        has_conflict = false</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="8">
-          
+        <li class="covered" data-hits="5" data-linenumber="8">
+          <span class="hits">5</span>
           
           <code class="ruby">        for dancer in dancers</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="9">
-          
+        <li class="covered" data-hits="3" data-linenumber="9">
+          <span class="hits">3</span>
           
           <code class="ruby">            if dancer.conflicted</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="10">
-          
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
           
           <code class="ruby">                has_conflict = true</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="11">
-          
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
           
           <code class="ruby">                break</code>
         </li>
@@ -904,8 +1450,8 @@
           <code class="ruby">        end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
+        <li class="covered" data-hits="5" data-linenumber="14">
+          <span class="hits">5</span>
           
           <code class="ruby">        return has_conflict</code>
         </li>
@@ -928,8 +1474,8 @@
           <code class="ruby">    def can_pick</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="18">
-          
+        <li class="covered" data-hits="7" data-linenumber="18">
+          <span class="hits">7</span>
           
           <code class="ruby">        if not project</code>
         </li>
@@ -964,8 +1510,8 @@
           <code class="ruby">        end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="24">
-          
+        <li class="covered" data-hits="7" data-linenumber="24">
+          <span class="hits">7</span>
           
           <code class="ruby">        return true</code>
         </li>
@@ -988,8 +1534,8 @@
           <code class="ruby">    def can_add(num)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="28">
-          
+        <li class="covered" data-hits="6" data-linenumber="28">
+          <span class="hits">6</span>
           
           <code class="ruby">        if self.maximum_picks == nil</code>
         </li>
@@ -1000,8 +1546,8 @@
           <code class="ruby">            return true</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="30">
-          
+        <li class="covered" data-hits="6" data-linenumber="30">
+          <span class="hits">6</span>
           
           <code class="ruby">        elsif self.dancers.length + num &gt; self.maximum_picks</code>
         </li>
@@ -1018,8 +1564,8 @@
           <code class="ruby">        else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="33">
-          
+        <li class="covered" data-hits="6" data-linenumber="33">
+          <span class="hits">6</span>
           
           <code class="ruby">            return true</code>
         </li>
@@ -1048,14 +1594,14 @@
           <code class="ruby">    def toggle_lock</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="38">
-          
+        <li class="covered" data-hits="4" data-linenumber="38">
+          <span class="hits">4</span>
           
           <code class="ruby">        if locked</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="39">
-          
+        <li class="covered" data-hits="1" data-linenumber="39">
+          <span class="hits">1</span>
           
           <code class="ruby">            self[:locked] = false</code>
         </li>
@@ -1066,8 +1612,8 @@
           <code class="ruby">        else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="41">
-          
+        <li class="covered" data-hits="3" data-linenumber="41">
+          <span class="hits">3</span>
           
           <code class="ruby">            self[:locked] = true</code>
         </li>
@@ -1096,32 +1642,32 @@
           <code class="ruby">    def add_dancers(ids)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="46">
-          
+        <li class="covered" data-hits="6" data-linenumber="46">
+          <span class="hits">6</span>
           
           <code class="ruby">        added = []</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="47">
-          
+        <li class="covered" data-hits="6" data-linenumber="47">
+          <span class="hits">6</span>
           
           <code class="ruby">        Dancer.find(Array(ids)).each do |id|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="48">
-          
+        <li class="covered" data-hits="6" data-linenumber="48">
+          <span class="hits">6</span>
           
           <code class="ruby">            if not id.teams.include? self</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="49">
-          
+        <li class="covered" data-hits="6" data-linenumber="49">
+          <span class="hits">6</span>
           
           <code class="ruby">                id.teams &lt;&lt; self</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
-          
+        <li class="covered" data-hits="6" data-linenumber="50">
+          <span class="hits">6</span>
           
           <code class="ruby">                if id.teams.length &gt; 2</code>
         </li>
@@ -1138,8 +1684,8 @@
           <code class="ruby">                end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="53">
-          
+        <li class="covered" data-hits="6" data-linenumber="53">
+          <span class="hits">6</span>
           
           <code class="ruby">                id.save</code>
         </li>
@@ -1150,8 +1696,8 @@
           <code class="ruby">            end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
+        <li class="covered" data-hits="6" data-linenumber="55">
+          <span class="hits">6</span>
           
           <code class="ruby">            added &lt;&lt; id.name</code>
         </li>
@@ -1162,8 +1708,8 @@
           <code class="ruby">        end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="57">
-          
+        <li class="covered" data-hits="6" data-linenumber="57">
+          <span class="hits">6</span>
           
           <code class="ruby">        return added</code>
         </li>
@@ -1186,50 +1732,50 @@
           <code class="ruby">    def remove_dancers(ids)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="61">
-          
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
           
           <code class="ruby">        removed = []</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="62">
-          
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
           
           <code class="ruby">        Dancer.find(Array(ids)).each do |id|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="63">
-          
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
           
           <code class="ruby">            if id.teams.include? self</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="64">
-          
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
           
           <code class="ruby">                self.dancers.delete(id)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="65">
-          
+        <li class="covered" data-hits="1" data-linenumber="65">
+          <span class="hits">1</span>
           
           <code class="ruby">                self.save</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="66">
-          
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
           
           <code class="ruby">                id.reload</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="67">
-          
+        <li class="covered" data-hits="1" data-linenumber="67">
+          <span class="hits">1</span>
           
           <code class="ruby">                if id.teams.length &lt; 3</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="68">
-          
+        <li class="covered" data-hits="1" data-linenumber="68">
+          <span class="hits">1</span>
           
           <code class="ruby">                    id.conflicted = false</code>
         </li>
@@ -1240,14 +1786,14 @@
           <code class="ruby">                end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="70">
-          
+        <li class="covered" data-hits="1" data-linenumber="70">
+          <span class="hits">1</span>
           
           <code class="ruby">                id.save</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="71">
-          
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
           
           <code class="ruby">                removed &lt;&lt; id.name</code>
         </li>
@@ -1264,8 +1810,8 @@
           <code class="ruby">        end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="74">
-          
+        <li class="covered" data-hits="1" data-linenumber="74">
+          <span class="hits">1</span>
           
           <code class="ruby">        return removed</code>
         </li>

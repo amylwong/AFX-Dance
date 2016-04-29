@@ -26,7 +26,7 @@ Background: Admin accounts exist
  Scenario: Page should not refresh
  	Given I am on the Admin Login Page
  	Then I log in as "p@example.com" with password "password"
- 	Then I should see "Signed In Successfully"
+ 	Then I should see "Signed in successfully."
  	Then I follow "Dancers"
  	Then I follow "Add to Team"
  	Then page should not refresh
