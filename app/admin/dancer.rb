@@ -39,9 +39,20 @@ ActiveAdmin.register Dancer do
     
     controller do
         
+        
+        
         def add_helper(ids, current_admin_user)
+            nil_casting_group = []
+            Dancer.find(Array(ids)).each do |id|
+                if id.casting_group == nil
+                    nil_casting_group << id.name
+                end
+            end
+            
             if current_admin_user.team == nil
                 redirect_to '/admin/dancers', :alert => "your account is not associated with a team"
+            elsif nil_casting_group.length > 0
+                redirect_to '/admin/dancers', :alert => "#{nil_casting_group} is not in a casting group. All dancers must be in a casting group to be added. Please reselect."
             else
                 if current_admin_user.team.locked
                     redirect_to '/admin/dancers', :alert => "#{current_admin_user.team.name} is currently locked right now"
@@ -57,6 +68,7 @@ ActiveAdmin.register Dancer do
                 end
             end
         end
+        
         
         def remove_helper(ids, current_admin_user)
             if current_admin_user.team == nil
@@ -109,11 +121,14 @@ ActiveAdmin.register Dancer do
         end
         column :casting_group
         column :conflicted
-        actions do |dancer|
-            item "Add to Team", "/admin/dancers/#{dancer.id}/add_to_my_team" , method: :post
-            
-            item "Remove from Team", "/admin/dancers/#{dancer.id}/remove_from_my_team" , method: :post
+        column :add_to_my_team do |dancer|
+            link_to "Add", "/admin/dancers/#{dancer.id}/add_to_my_team" , method: :post
         end
+        column :remove_from_my_team do |dancer|
+            link_to "Remove", "/admin/dancers/#{dancer.id}/remove_from_my_team" , method: :post
+        end
+        actions
+        
     end
     
     show do |dancer|

@@ -99,7 +99,7 @@ ActiveAdmin.register Team do
             end
         end
         
-        panel "Admins" do
+        panel "Director/s" do
             current_team = Team.find(params[:id])
             attributes_table_for user do
                 current_team.admin_users.each do |admin|
