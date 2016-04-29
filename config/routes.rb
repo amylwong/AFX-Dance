@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   
   #homepage_controller
-  get '/home', to: 'homepage#index'
+  root 'homepage#index'
+  #get '/home', to: 'homepage#index'
   
   # audition_form_controller
   get '/auditionform', to: 'audition_form#index'
