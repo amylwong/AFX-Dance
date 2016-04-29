@@ -6,6 +6,6 @@ class CastingGroup < ActiveRecord::Base
     validates :video, format: { 
         with: URI.regexp,
         message: "Must enter a valid url."
-    }, allow_blank: false
+    }, allow_blank: true
     
 end
