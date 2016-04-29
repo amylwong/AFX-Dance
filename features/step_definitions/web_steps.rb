@@ -31,6 +31,10 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Then(/^I follow the view with number "(.*?)"$/) do |arg1|
+  find(:xpath, "//a[@href=\"/admin/dancers/#{arg1}\"]").click
+end
+
 Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
   page.response_headers['Content-Disposition'].should include("filename=#{filename}")
 end

@@ -14,7 +14,7 @@ Background: the admin page has some content
   Then I follow "Audition Form"
   And I should see "AFX AUDITIONS"
   And I fill in "dancer[name]" with "Dancer1"                    
-  And I select "4" from "dancer[year]"
+  And I select "Senior or older" from "dancer[year]"
   And I select "Male" from "dancer[gender]"                   
   And I fill in "dancer[email]" with "email@email.com"           
   And I fill in "dancer[phone]" with "999-999-9999"              

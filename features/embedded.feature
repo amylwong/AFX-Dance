@@ -24,27 +24,19 @@ Background: Admin accounts exist
     | video											| id |
     | https://www.youtube.com/watch?v=6FNDIz1FeE0	| 1	 |
 
-Scenario: When I click on a dancer profile, I should see an embedded video
-  Given I am on the Admin Login Page
-  Then I log in as "p@example.com" with password "password"
-  Then I should see "Signed In Successfully"
-  Then I follow "Dancers"
-  Then I follow "View"
-  Then I should see an embedded video
-
 Scenario: The embedded video should match the dancer's casting group video
   Given I am on the Admin Login Page
   Then I log in as "p@example.com" with password "password"
-  Then I should see "Signed In Successfully"
+  Then I should see "Signed in successfully"
   Then I follow "Dancers"
-  Then I follow "View"
+  Then I follow the view with number "1"
   Then I should see "https://www.youtube.com/watch?v=6FNDIz1FeE0"
 
 Scenario: The dancer has not been associated with a casting video yet
   Given I am on the Admin Login Page
   Then I log in as "p@example.com" with password "password"
-  Then I should see "Signed In Successfully"
+  Then I should see "Signed in successfully"
   Then I follow "Dancers"
-  Then I follow "View"
-  Then I should see "No Casting Video."
+  Then I follow the view with number "2"
+  Then I should not see "https://www.youtube.com/watch?v=6FNDIz1FeE0"
 
