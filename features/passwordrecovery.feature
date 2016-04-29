@@ -10,12 +10,14 @@ Background: Admin accounts exist
 
 Scenario: I should be able to recover my password via email
 	Given I am on the Admin Login Page
-	And I follow "Forgot password"
-	Then I fill in "email" with "admin@example.com"
-	I should see "Password has been sent to email admin@example.com"
+	And I follow "Forgot your password?"
+	Then I fill in "admin_user[email]" with "admin@example.com"
+	And I press "Reset My Password"
+	Then I should see "You will receive an email with instructions on how to reset your password in a few minutes."
 
 Scenario: Fake Email
 	Given I am on the Admin Login Page
-	And I follow "Forgot password"
-	Then I fill in "email" with "fakeadmin@example.com"
-	I should see "There is no account associated with this email. Please try again."
+	And I follow "Forgot your password?"
+	Then I fill in "admin_user[email]" with "fakeadmin@example.com"
+	And I press "Reset My Password"
+	Then I should see "error prohibited this admin user from being saved"

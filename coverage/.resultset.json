@@ -53,6 +53,7 @@
       "/home/ubuntu/workspace/AFX-Dance/config/environments/test.rb": [
         1,
         null,
+        1,
         null,
         null,
         null,
@@ -983,15 +984,8 @@
         null,
         null,
         null
-      ],
-      "/home/ubuntu/workspace/AFX-Dance/app/controllers/homepage_controller.rb": [
-        1,
-        1,
-        1,
-        null,
-        null
       ]
     },
-    "timestamp": 1461922046
+    "timestamp": 1461922464
   }
 }
