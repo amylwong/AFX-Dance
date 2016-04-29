@@ -5,6 +5,11 @@ Feature: Locking Teams
 
 Background:
   Given I am on the Admin Login Page
+  
+  Given the following casting_groups exist:
+    | id | video                                       |
+    | 1  | https://www.youtube.com/watch?v=GIooUZHGmYs |
+    
   Given the following teams exist:
      | project  | name      | locked  | maximum_picks | id |
      | true     | project1  | false   | 1             | 1  |
@@ -19,8 +24,8 @@ Background:
      
   Given the following dancers exist:
      | casting_group_id | name      | email         | phone           | year  | gender        | conflicted  | id  |
-     |                  | Dancer1   | test@test.com | 999-999-9999    | 4     | Male          | false       | 1   |
-     |                  | Dancer2   | test@test.com | 999-999-9999    | 4     | Male          | false       | 2   |
+     |         1        | Dancer1   | test@test.com | 999-999-9999    | 4     | Male          | false       | 1   |
+     |         1        | Dancer2   | test@test.com | 999-999-9999    | 4     | Male          | false       | 2   |
      
   Given the following dancers_teams exist:
     | team_id | dancer_id |

@@ -128,7 +128,9 @@ ActiveAdmin.register Team do
         column :directors do |team|
             wauw = ""
             team.admin_users.each do |a|
-                wauw << a.names
+                if a.names != nil
+                    wauw << a.names
+                end
             end
             wauw
         end

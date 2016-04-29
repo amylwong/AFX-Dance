@@ -26,7 +26,7 @@ Background:
   Then I log in as "p@example.com" with password "password"
   And I should see "Signed in successfully"
   Then I follow "Dancers"
-  Then I follow "Add to Team"
+  Then I follow "Add"
   Then I follow "Logout"
 
 
@@ -37,15 +37,6 @@ Scenario: Testing CSV when everything works
 	Then I follow "View"
 	Then follow "Print CSV for project1"
 	Then I should get a download with the filename "project1_roster.csv"
-	
-
-@wip
-Scenario: CSV with empty team
-	Given I am logged in as a Training_Director
-	And I am leading the team "SadTeam"
-	Then I go to the Dancers Page
-	Then I follow CSV
-	Then I should see "There are no dancers in your team"
 
 Scenario: CSV without leading a team
 	Given I log in as "admin@example.com" with password "password" 

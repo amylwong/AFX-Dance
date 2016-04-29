@@ -39,8 +39,6 @@ ActiveAdmin.register Dancer do
     
     controller do
         
-        
-        
         def add_helper(ids, current_admin_user)
             nil_casting_group = []
             Dancer.find(Array(ids)).each do |id|
@@ -97,14 +95,10 @@ ActiveAdmin.register Dancer do
     end
     
     batch_action :final_randomization do |ids|
-        if Team.project_teams_done
-            puts "PROJECT TEAMS DONE"
+        if Team.all_teams_done
             Team.final_randomization
-            redirect_to '/admin/dancers'
-        else
-            puts "PROJECT TEAMS NOT DONE"
-            redirect_to '/admin/dancers'
         end
+        redirect_to '/admin/dancers'
     end
     
     index do

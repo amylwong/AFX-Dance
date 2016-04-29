@@ -5,12 +5,18 @@ Feature: Roster Locking
 
 Background: Teams and Director accounts are set up. 
   Given I am on the Admin Login Page
+  
+  Given the following casting_groups exist:
+    | id | video                                       |
+    | 1  | https://www.youtube.com/watch?v=GIooUZHGmYs |
+    
   Given the following dancers exist:
-     | name     | year    | gender    | email            | phone        | conflicted |
-     | Dancer1  | 4       | Male      | test1@test.com   | 111-111-1111 |            |
-     | Dancer2  | 4       | Male      | test2@test.com   | 222-222-2222 |            |
-     | Dancer3  | 4       | Male      | test3@test.com   | 333-333-3333 |            |  
-     | Dancer4  | 4       | Male      | test4@test.com   | 444-444-4444 |            |
+     | name     | year    | gender    | email            | phone        | conflicted | casting_group_id |
+     | Dancer1  | 4       | Male      | test1@test.com   | 111-111-1111 |            | 1                |
+     | Dancer2  | 4       | Male      | test2@test.com   | 222-222-2222 |            | 1                |
+     | Dancer3  | 4       | Male      | test3@test.com   | 333-333-3333 |            | 1                |
+     | Dancer4  | 4       | Male      | test4@test.com   | 444-444-4444 |            | 1                |
+     
   Given the following teams exist:
      | name           | project | locked | id |
      | Project1       | true    | false  |  1 |         
@@ -62,7 +68,7 @@ Scenario:  Teams cannot add or remove dancers when their roster is locked
   Then I should be on the Admin Page
   Then I follow "Dancers"
   Then I should be on the Dancer Page
-  Then I follow "Remove from Team" for dancer "dancer_1"
+  Then I follow "Remove" for dancer "dancer_1"
   Then I should see ""
 
 Scenario: Conflicts: There is a conflict on a dancer if more than 2 teams have added the dancer to their team.

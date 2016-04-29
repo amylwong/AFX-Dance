@@ -49,6 +49,3 @@ Scenario: As an admin, I should be able to see what casting group a dancer is in
   Then I should see "Casting group #1"
   Then I follow "Casting group #1"
   Then I should see "Video"
-
-@wip
-Scenario: I should see all casting groups as an Admin

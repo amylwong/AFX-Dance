@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429105040) do
+ActiveRecord::Schema.define(version: 20160429114207) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160429105040) do
     t.string  "year"
     t.string  "gender"
     t.boolean "conflicted",       default: false
+    t.boolean "available",        default: true
   end
 
   add_index "dancers", ["casting_group_id"], name: "index_dancers_on_casting_group_id"
