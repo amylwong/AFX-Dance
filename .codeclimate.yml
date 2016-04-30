@@ -35,3 +35,5 @@ exclude_paths:
 - features/**/*
 - log/**/*
 - tmp/**/*
+- app/assets/**/*
+- public/**/*
