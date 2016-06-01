@@ -5,8 +5,8 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc{ I18n.t("active_admin.dashboard") } do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+        span "Welcome to the AFX Audition Site!!"
+        small "See below for more information"
       end
     end
     
@@ -14,8 +14,9 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Navigation" do
           ul do
+            li link_to("How do I use this site?")
             li link_to("Home Page","/")
-            li link_to("Audition Form","/auditionform")
+            li link_to("Signup Form","/auditionform")
           end
         end
       end
