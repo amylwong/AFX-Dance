@@ -1,6 +1,10 @@
 ActiveAdmin.register AdminUser do
   
   permit_params :email, :password, :password_confirmation, :admin_type, :team, :team_id
+  
+  action_item :view do
+    link_to 'New Semester'
+  end
 
   index do
     selectable_column

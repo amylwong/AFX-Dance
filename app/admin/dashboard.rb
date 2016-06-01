@@ -10,6 +10,10 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     
+    panel "Info" do
+      link_to("Delete Stuff","/")
+    end
+
     columns do
       column do
         panel "Navigation" do
