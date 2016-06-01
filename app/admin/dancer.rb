@@ -15,6 +15,11 @@ ActiveAdmin.register Dancer do
     #   permitted
     # end
     
+    action_item :view do
+        Team.final_randomization
+        link_to 'Final Randomization'
+    end
+
     member_action :add_to_my_team, :method => :post do
         ids = params[:id]
         add_helper(ids, current_admin_user)
