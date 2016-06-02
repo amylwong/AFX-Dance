@@ -15,12 +15,21 @@ ActiveAdmin.register Dancer do
     #   permitted
     # end
     
-    action_item :view do
-        if Team.all_teams_done
+    action_item :wow, only: :index do
+        link_to "Final Randomization", "/admin/dancers/final_randomization"
+    end
+    
+    collection_action :final_randomization, method: :get do
+        admin_type = current_admin_user.admin_type
+        if admin_type != "admin" and admin_type != "board"
+            flash[:alert] = "You do not have sufficient permissions to do this!"
+        elsif Team.all_teams_done
             Team.final_randomization
+            flash[:notice] = "Members randomized between training teams."
+        else
+            flash[:alert] = "Not all teams are locked! Can't randomize."
         end
-        flash[:notice] = "Teams have been randomized."
-        link_to 'Final Randomization' #when not given a url, just redirects to current page
+        redirect_to "/admin/dancers"
     end
 
     member_action :add_to_my_team, :method => :post do
