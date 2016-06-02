@@ -16,7 +16,9 @@ ActiveAdmin.register Dancer do
     # end
     
     action_item :view do
-        Team.final_randomization
+        if Team.all_teams_done
+            Team.final_randomization
+        end
         link_to 'Final Randomization'
     end
 
@@ -97,13 +99,6 @@ ActiveAdmin.register Dancer do
     
     batch_action :remove_from_my_team do |ids|
         remove_helper(ids, current_admin_user)
-    end
-    
-    batch_action :final_randomization do |ids|
-        if Team.all_teams_done
-            Team.final_randomization
-        end
-        redirect_to '/admin/dancers'
     end
     
     index do
