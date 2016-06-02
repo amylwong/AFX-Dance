@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   #homepage_controller
   root 'homepage#index'
   
+  #infopage_controller
+  get '/info', to: 'infopage#index'
+  
   # audition_form_controller
   get '/auditionform', to: 'audition_form#index'
   post '/auditionform', to: 'audition_form#create_dancer', as: "audition_form"

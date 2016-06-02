@@ -1,0 +1,62 @@
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+.mynav{
+    background: white;
+    color: black;
+    height:55px;
+}
+
+
+.mynav .mylogo{
+    color:#000080;
+    font-size: 20px;
+}
+
+.btn{
+    margin-top:-5px;
+}
+
+.login{
+    background: #4b5b72;
+    color:white;
+    border-radius: 0;
+}
+
+
+.panel-howto{
+    background: #fff url("dance1.jpg") center top fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+	padding: 8vh 20px 8vh 20px;
+	width: 100%;
+	margin-top: -10px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	color:white;
+}
+
+
+.home-btn{
+    padding:10px 20px 10px 20px;
+    background:white;
+    border-radius: 0;
+    color:black;
+}
+
+.panel-howto2{
+    padding: 100px 20px 100px 20px;
+    background: white;
+}
+
+
+
+
+
+

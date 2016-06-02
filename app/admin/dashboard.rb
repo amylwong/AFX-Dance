@@ -18,7 +18,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Navigation" do
           ul do
-            li link_to("How do I use this site?")
+            li link_to("How do I use this site?", "/info")
             li link_to("Home Page","/")
             li link_to("Signup Form","/auditionform")
           end
