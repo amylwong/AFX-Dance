@@ -19,7 +19,8 @@ ActiveAdmin.register Dancer do
         if Team.all_teams_done
             Team.final_randomization
         end
-        link_to 'Final Randomization'
+        flash[:notice] = "Teams have been randomized."
+        link_to 'Final Randomization' #when not given a url, just redirects to current page
     end
 
     member_action :add_to_my_team, :method => :post do
