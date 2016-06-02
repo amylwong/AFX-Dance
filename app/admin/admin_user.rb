@@ -15,7 +15,7 @@ ActiveAdmin.register AdminUser do
       Team.destroy_all
       Dancer.destroy_all
       CastingGroup.destroy_all
-      AdminUser.where("admin_type = ? OR admin_type = ? OR admin_type = ?", "project","training").destroy_all
+      AdminUser.where("admin_type = ? OR admin_type = ?", "project","training").destroy_all
       flash[:notice] = "Semesters have been reset."
     end
     redirect_to "/admin/admin_users"
