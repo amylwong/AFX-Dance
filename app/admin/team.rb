@@ -82,7 +82,7 @@ ActiveAdmin.register Team do
                     male = 0
                     female = 0
                     current_team.dancers.each do |dancer|
-                        if dancer.gender == "Male"
+                        if dancer.gender == "Male" || dancer.gender == "M"
                             male = male + 1
                         else
                             female = female + 1

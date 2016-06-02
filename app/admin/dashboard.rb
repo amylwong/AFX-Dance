@@ -7,6 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
       span class: "blank_slate" do
         span "Welcome to the AFX Audition Site!!"
         small "See below for more information"
+        small "NOTE: We have a weird bug with the formatting so if the site looks funny just refresh it."
       end
     end
     
