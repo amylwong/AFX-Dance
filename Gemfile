@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "puma"
+
 gem "cancan"
 gem 'pry'
 
