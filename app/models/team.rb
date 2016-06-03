@@ -94,7 +94,7 @@ class Team < ActiveRecord::Base
         
         teamless = [] # yolo way
         Dancer.all.each do |dancer|
-            if dancer.teams.length == 0
+            if dancer.teams.length == 0 and dancer.casting_group != nil
                 teamless << dancer
             end
         end
