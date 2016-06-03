@@ -10,10 +10,6 @@ ActiveAdmin.register_page "Dashboard" do
         small "NOTE: We have a weird bug with the formatting so if the site looks funny just refresh it."
       end
     end
-    
-    panel "Info" do
-      link_to("Delete Stuff","/")
-    end
 
     columns do
       column do
