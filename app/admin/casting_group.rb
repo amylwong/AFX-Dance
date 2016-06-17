@@ -8,7 +8,12 @@ ActiveAdmin.register CastingGroup do
     
     controller do
         def create
-            casting_group = CastingGroup.create!(:video => params[:casting_group][:video])
+            casting_group = CastingGroup.create(:video => params[:casting_group][:video])
+            if casting_group.errors.any?
+                flash[:notice] = "The video field must contain a valid url"
+                redirect_to("/admin/casting_groups/new")
+                return
+            end
             member_ids = params[:casting_group][:members].split(",")
             dancers = Dancer.where(id: member_ids)
             for dancer in dancers  
