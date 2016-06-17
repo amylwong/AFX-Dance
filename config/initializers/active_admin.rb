@@ -263,4 +263,7 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
+  
+  config.comments = false
+
 end
