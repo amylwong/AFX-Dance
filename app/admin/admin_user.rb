@@ -1,6 +1,6 @@
 ActiveAdmin.register AdminUser do
   
-  permit_params :email, :password, :password_confirmation, :admin_type, :team, :team_id
+  permit_params :email, :names, :password, :password_confirmation, :admin_type, :team, :team_id
 
   
   action_item :semester, only: :index do
@@ -58,6 +58,18 @@ ActiveAdmin.register AdminUser do
       end
     end
     active_admin_comments
+  end
+  
+  form do |f|
+      f.inputs do
+          f.input :email
+          f.input :names
+          f.input :admin_type
+          f.input :team
+          f.input :password
+          f.input :password_confirmation
+      end
+      f.actions
   end
   
   filter :admin_type
