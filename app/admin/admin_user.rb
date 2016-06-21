@@ -3,9 +3,9 @@ ActiveAdmin.register AdminUser do
   permit_params :email, :names, :password, :password_confirmation, :admin_type, :team, :team_id
 
   
-  action_item :semester, only: :index do
-    link_to 'New Semester', "/admin/admin_users/new_semester"
-  end
+  # action_item :semester, only: :index do
+  #   link_to 'New Semester', "/admin/admin_users/new_semester"
+  # end
   
   collection_action :new_semester, method: :get do
     admin_type = current_admin_user.admin_type

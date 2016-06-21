@@ -1,5 +1,6 @@
 class HomepageController < ApplicationController
     def index
-        render "homepage/home"
+        redirect_to "/admin"
+        #render "homepage/home"
     end
 end
