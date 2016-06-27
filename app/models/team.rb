@@ -92,10 +92,17 @@ class Team < ActiveRecord::Base
     
     def self.final_randomization
         
-        teamless = [] # yolo way
+        teamless_guys = []
+        teamless_girls =[]
+
         Dancer.all.each do |dancer|
+            # yolo way
             if dancer.teams.length == 0 and dancer.casting_group != nil
-                teamless << dancer
+                if dancer.gender == "M"
+                    teamless_guys << dancer
+                else
+                    teamless_girls << dancer
+                end
             end
         end
 
@@ -107,10 +114,18 @@ class Team < ActiveRecord::Base
         end
         
         if training_teams.length > 0
-            while teamless.length > 0
-                teamless = teamless.shuffle
+            # separate into guys / girls in an attempt to maintain 
+            # an even gender ratio
+            while teamless_guys.length > 0
+                teamless_guys.shuffle
                 training_teams.sort! { |a,b| a.dancers.length <=> b.dancers.length }
-                training_teams[0].dancers << teamless.shift
+                training_teams[0].dancers << teamless_guys.shift
+            end
+            
+            while teamless_girls.length > 0
+                teamless_girls.shuffle
+                training_teams.sort! { |a,b| a.dancers.length <=> b.dancers.length }
+                training_teams[0].dancers << teamless_girls.shift
             end
         end
         
