@@ -101,11 +101,9 @@ class Team < ActiveRecord::Base
 
         training_teams = []
         Team.where("project = ?", false).each do |team|
-            if team.maximum_picks == nil
-                training_teams << team
-            elsif team.dancers.length < team.maximum_picks
-                training_teams << team
-            end
+            # we can probably just set training_teams equal to this
+            # didnt have time to test, dont want to break prod
+            training_teams << team
         end
         
         if training_teams.length > 0
