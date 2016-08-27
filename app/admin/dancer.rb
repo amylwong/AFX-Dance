@@ -2,19 +2,6 @@ ActiveAdmin.register Dancer do
     
     permit_params :name, :email, :phone, :year, :gender, :casting_group_id, team_ids: [], casting_group_ids: []
     
-    # See permitted parameters documentation:
-    # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-    #
-    # permit_params :list, :of, :attributes, :on, :model
-    #
-    # or
-    #
-    # permit_params do
-    #   permitted = [:permitted, :attributes]
-    #   permitted << :other if resource.something?
-    #   permitted
-    # end
-    
     action_item :wow, only: :index do
         link_to "Final Randomization", "/admin/dancers/final_randomization"
     end
@@ -42,7 +29,7 @@ ActiveAdmin.register Dancer do
         remove_helper(ids, current_admin_user)
     end
     
-    form do |f|
+    form do |f| # form to create / update a Dancer
         f.inputs do
             f.input :casting_group, member_label: Proc.new { |c| "#{c.id}" }
             f.input :name
@@ -57,20 +44,23 @@ ActiveAdmin.register Dancer do
     controller do
         
         def add_helper(ids, current_admin_user)
-            nil_casting_group = []
-            Dancer.find(Array(ids)).each do |id|
-                if id.casting_group == nil
-                    nil_casting_group << id.name
-                end
-            end
+            # helper method to add dancers (specified by `ids`) to the associated Team
+            # of the `current_admin_user`
             
+            # find all dancers without casting groups and return a list of names
+            dancers_without_casting_groups = Dancer.where(id: ids, casting_group: nil).pluck(:name)
+            
+            # admin user's account must be associated with a team
             if current_admin_user.team == nil
                 redirect_to '/admin/dancers', :alert => "your account is not associated with a team"
-            elsif nil_casting_group.length > 0
-                redirect_to '/admin/dancers', :alert => "#{nil_casting_group} is not in a casting group. All dancers must be in a casting group to be added. Please reselect."
+            # all picked dancers must be in a casting group
+            elsif dancers_without_casting_groups.length > 0
+                redirect_to '/admin/dancers', :alert => "#{dancers_without_casting_groups} is not in a casting group. All dancers must be in a casting group to be added. Please reselect."
             else
+                # the admin's team cannot be locked
                 if current_admin_user.team.locked
                     redirect_to '/admin/dancers', :alert => "#{current_admin_user.team.name} is currently locked right now"
+                # if the admin's team can pick, then proceed
                 elsif current_admin_user.team.can_pick
                     if current_admin_user.team.can_add(ids.length)
                         added = current_admin_user.team.add_dancers(ids)
@@ -86,11 +76,17 @@ ActiveAdmin.register Dancer do
         
         
         def remove_helper(ids, current_admin_user)
+            # helper method to remove dancers (specified by `ids`) from the associated Team
+            # of the `current_admin_user`
+            
+            # current_admin_user must be associated with a Team
             if current_admin_user.team == nil
                 redirect_to '/admin/dancers', :alert => "your account is not associated with a team"
             else
+                # the admin cannot add dancers to a locked team
                 if current_admin_user.team.locked
                     redirect_to '/admin/dancers', :alert => "#{current_admin_user.team.name} is currently locked right now"
+                # project teams cannot still be picking
                 elsif current_admin_user.team.can_pick
                     removed = current_admin_user.team.remove_dancers(ids)
                     redirect_to '/admin/dancers', :alert => "#{removed} have been deleted from #{current_admin_user.team.name}"
@@ -101,8 +97,6 @@ ActiveAdmin.register Dancer do
         end
     end
         
-        
-
     batch_action :add_to_my_team do |ids|
         add_helper(ids, current_admin_user)
     end
@@ -111,7 +105,7 @@ ActiveAdmin.register Dancer do
         remove_helper(ids, current_admin_user)
     end
     
-    index do
+    index do # called when displaying a list of Dancers
         selectable_column
         column :id
         column :name
@@ -180,10 +174,11 @@ ActiveAdmin.register Dancer do
         end
     
     active_admin_comments
+
   end
     
-    
     csv do
+        # define custom csv export
         column(:casting_number) { |dancer| dancer.id }
         column(:name) { |dancer| dancer.name }
         column(:email) { |dancer| dancer.email }
@@ -191,10 +186,8 @@ ActiveAdmin.register Dancer do
         column(:year) { |dancer| dancer.year }
         column(:gender) { |dancer| dancer.gender }
         column(:teams) { |dancer| dancer.teams.each.collect { |item| item.name }.join(", ") }
-    
     end
     
-    #scope("Available"){|scope| scope.where(available:true)}
     scope :all, default: true
     scope("Conflicted"){|scope| scope.where(conflicted:true)}
     
@@ -203,5 +196,6 @@ ActiveAdmin.register Dancer do
     filter :id
     filter :teams
     
-    config.per_page = 15
+    config.per_page = 15 # limit results to 15 per page
+
 end
