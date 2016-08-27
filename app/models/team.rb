@@ -3,7 +3,9 @@ class Team < ActiveRecord::Base
     has_many :admin_users
     has_and_belongs_to_many :dancers
     
+    # checks if the team currently has conflicted dancers
     def has_conflicted_dancers
+        # is there a way to find this via CollectionProxy actions??
         has_conflict = false
         for dancer in dancers
             if dancer.conflicted
@@ -14,16 +16,19 @@ class Team < ActiveRecord::Base
         return has_conflict
     end
     
+    # checks if the team can currently pick
     def can_pick
         if not project
-            if Team.where("project = ? AND locked = ?", true, false).length > 0
-                errors.add(:pick, "not all project teams are done picking") #idk
+            # training teams can only pick after project teams are done picking
+            if Team.where(project: true, locked: false).count > 0
+                errors.add(:pick, "not all project teams are done picking")
                 return false
             end
         end
         return true
     end
     
+    # checks if the team can add `num` number of picks
     def can_add(num)
         if self.maximum_picks == nil
             return true
@@ -34,6 +39,7 @@ class Team < ActiveRecord::Base
         end
     end
     
+    # toggles lock between true and false
     def toggle_lock
         if locked
             self[:locked] = false
@@ -42,7 +48,11 @@ class Team < ActiveRecord::Base
         end
     end
     
+    # helper function to add dancers to a team
     def add_dancers(ids)
+        # keeping this iteratively so we are able to return
+        # the list of added dancers - will revisit
+        # (this gives me cancer)
         added = []
         Dancer.find(Array(ids)).each do |id|
             if not id.teams.include? self
@@ -57,7 +67,10 @@ class Team < ActiveRecord::Base
         return added
     end
     
+    # helper function to remove dancers from a team
     def remove_dancers(ids)
+        # keeping this iteratively so we are able to return
+        # the list of removed dancers - will revisit
         removed = []
         Dancer.find(Array(ids)).each do |id|
             if id.teams.include? self
@@ -74,16 +87,18 @@ class Team < ActiveRecord::Base
         return removed
     end
     
+    # returns true if all project teams are locked
     def self.project_teams_done
-        if Team.where("project = ? AND locked = ?", true, false).length > 0
+        if Team.where(project: true, locked: false).count > 0
             return false
         else
             return true
         end
     end
     
+    # returns true if all teams are locked
     def self.all_teams_done
-        if Team.where("locked = ?", false).length > 0
+        if Team.where(locked: false).count > 0
             return false
         else
             return true
@@ -92,43 +107,31 @@ class Team < ActiveRecord::Base
     
     def self.final_randomization
         
-        teamless_guys = []
-        teamless_girls =[]
-
-        Dancer.all.each do |dancer|
-            # yolo way
-            if dancer.teams.length == 0 and dancer.casting_group != nil
-                if dancer.gender == "M"
-                    teamless_guys << dancer
-                else
-                    teamless_girls << dancer
-                end
-            end
-        end
-
-        training_teams = []
-        Team.where("project = ?", false).each do |team|
-            # we can probably just set training_teams equal to this
-            # didnt have time to test, dont want to break prod
-            training_teams << team
-        end
+        # fetch arrays of teamless guys and teamless girls
+        teamless_guys = Dancer.joins(:teams).group('dancers.id').having('count(dancer_id) = ? AND gender = ?', 0, "M").to_ary
+        teamless_girls = Dancer.joins(:teams).group('dancers.id').having('count(dancer_id) = ? AND gender = ?', 0, "F").to_ary
+        
+        # fetch arrays of teamless dancers by querying for any dancer with zero teams
+        teamless_dancers = Dancer.joins(:teams).group('dancers.id').having('count(dancer_id) = ?', 0).to_ary
+        
+        # fetch all training teams
+        training_teams = Team.where(project: false)
         
         if training_teams.length > 0
-            # separate into guys / girls in an attempt to maintain 
-            # an even gender ratio
-            while teamless_guys.length > 0
-                teamless_guys.shuffle
-                training_teams.sort! { |a,b| a.dancers.length <=> b.dancers.length }
-                training_teams[0].dancers << teamless_guys.shift
-            end
+            # previously, we were separating guys / girls in an attempt to maintain an
+            # even gender ratio - however, this would result in 'frontloading' either gender:
+            # we'll use a truly random method for now, until finding something better
             
-            while teamless_girls.length > 0
-                teamless_girls.shuffle
+            while teamless_dancers.length > 0
+                # randomize dancers each time
+                teamless_dancers.shuffle
+                # sort training teams so we add to the one with least people
                 training_teams.sort! { |a,b| a.dancers.length <=> b.dancers.length }
-                training_teams[0].dancers << teamless_girls.shift
+                training_teams[0].dancers << teamless_dancers.shift
             end
         end
         
+        # save all the training teams
         training_teams.each do |team|
             team.save
         end
