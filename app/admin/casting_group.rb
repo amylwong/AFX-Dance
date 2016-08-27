@@ -2,85 +2,100 @@ ActiveAdmin.register CastingGroup do
     
     permit_params :video
     
-    before_create do |product|
-        product.creator = adasdad
-    end
-    
     controller do
-        def create
+
+        def create # called when creating a new CastingGroup
+            # validate CastingGroup information being passed in
             casting_group = CastingGroup.create(:video => params[:casting_group][:video])
             if casting_group.errors.any?
                 flash[:notice] = "The video field must contain a valid url"
                 redirect_to("/admin/casting_groups/new")
                 return
             end
-            member_ids = params[:casting_group][:members].split(",")
-            dancers = Dancer.where(id: member_ids)
-            for dancer in dancers  
-                dancer.casting_group = casting_group
-                dancer.save
-                member_ids.delete(dancer.id.to_s)
+            
+            # retrieve a list of dancer ids that we will update
+            dancers_to_update = Dancer.where(id: member_ids).pluck(:id)
+            
+            # find extraneous ids that don't correspond to Dancer pks
+            dancers_not_updated = member_ids - dancers_to_update
+            
+            # update only the dancer ids that were found
+            Dancer.where(id: dancers_to_update).update_all(casting_group: casting_group.id)
+            
+            # raise alert if any included dancer ids were not updated
+            if dancers_not_updated.length != 0
+                flash[:notice] = "The following dancers were not added to the casting group: " + dancers_not_updated.to_s
             end
-            if member_ids.length != 0
-                flash[:notice] = "The following dancers were not added to the casting group: " + member_ids.to_s
-            end
+
             redirect_to("/admin/casting_groups/#{casting_group.id}")
         end
         
-        def update
+        def update # called when updating an existing CastingGroup
+            # inside `update`, we update video as well as a list of dancers
+            # note that the intended behavior is to "overwrite" the previous list of dancers
+            # essentially, this means that we have to clear previous dancers, THEN set the new ones
+
+            # get the casting group to update
             casting_group = CastingGroup.find(params[:id])
+            # update the video
             casting_group.video = params[:casting_group][:video]
-            # this is to clear current dancers, lmao
-            for dancer in casting_group.dancers
-                dancer.casting_group = nil
-                dancer.save
-            end
-            # save new dancers
-            member_ids = params[:casting_group][:members].split(",")
-            dancers = Dancer.where(id: member_ids)
-            for dancer in dancers  
-                dancer.casting_group = casting_group
-                dancer.save
-                member_ids.delete(dancer.id.to_s)
-            end
             casting_group.save
-            if member_ids.length != 0
-                redirect_to "/admin/casting_groups/#{casting_group.id}", :alert => "The following dancers were not added to the casting group: " + member_ids.to_s
+            
+            # clear old dancers
+            Dancer.where(id: casting_group.dancers.pluck(:id)).update_all(casting_group: nil)
+            
+            # get dancers to update and find extraneous ids that don't correspond to Dancer pks
+            member_ids = params[:casting_group][:members].split(",")
+            dancers_to_update = Dancer.where(id: member_ids).pluck(:id)
+            dancers_not_updated = member_ids - dancers_to_update
+            
+            # save new dancers
+            Dancer.where(id: dancers_to_update).update_all(casting_group: casting_group.id)
+            
+            # raise alert if any included dancer ids were not updated
+            if dancers_not_updated.length != 0
+                redirect_to "/admin/casting_groups/#{casting_group.id}", :alert => "The following dancers were not added to the casting group: " + dancers_not_updated.to_s
             else
                 redirect_to "/admin/casting_groups/#{casting_group.id}"
             end
         end
     end
     
-    
-    index do
+    index do # called when displaying a list of CastingGroups
         selectable_column
+        # display the CastingGroup's id
         column :id
         column :dancers do |cg|
+            # display a comma-separated list of dancer names
             cg.dancers.each.collect { |item| item.name }.join(", ") 
         end
         column :dancer_ids do |cg|
+            # display a comma-separated list of dancer ids
             cg.dancers.each.collect { |item| item.id }.join(", ")
         end
+        # display the video
         column :video
         actions
     end
     
-    
-    show do |user|
+    show do |user| # called when displaying a specific CastingGroup
         casting_group = CastingGroup.find(params[:id])
         panel "Details" do
             attributes_table_for user do
                 row :dancers do
+                    # display a comma-separated list of user names
                     casting_group.dancers.each.collect { |item| item.name }.join(", ") 
                 end
                 row :dancer_ids do
+                    # display a comma-separated list of user ids
                     casting_group.dancers.each.collect { |item| item.id }.join(", ")
                 end
                 row :casting_link do
+                    # display the casting link
                     text_node link_to(casting_group.video, casting_group.video, method: :get).html_safe
                 end
                 row :casting_video do |dancer|
+                    # display the youtube video with special parsing to embed the youtube video
                     regex = /^(?:https?:\/\/)?(?:www\.)?\w*\.\w*\/(?:watch\?v=)?((?:p\/)?[\w\-]+)/
                     parse = casting_group.video.match(regex)
                     parse_link = 'Embed Failed'
@@ -103,9 +118,8 @@ ActiveAdmin.register CastingGroup do
         active_admin_comments
     end
     
-    form do |f|
-        
-        f.inputs do
+    form do |f| # form to create / update a CastingGroup
+        f.inputs do # we allow the user to input video + a comma separated string of member ids
             f.input :video
             f.input :members
         end
@@ -140,9 +154,8 @@ ActiveAdmin.register CastingGroup do
         column(:video) { |casting_group| casting_group.video}
     end
    
-   
     filter :id, label: 'Casting Group Number'
     
-   
-   config.per_page = 15 
+    config.per_page = 15 # show 15 results per page
+ 
 end
