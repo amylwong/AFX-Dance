@@ -125,6 +125,8 @@ ActiveAdmin.register CastingGroup do
         end
         
         if params[:id] != nil
+            # if we are updating a casting group, hacky way to allow users to update
+            # the list of member ids
             casting_group = CastingGroup.find(params[:id])
             member_ids = ""
             for dancer in casting_group.dancers
@@ -140,6 +142,7 @@ ActiveAdmin.register CastingGroup do
             start_format = "<ol><li class=\"string input optional stringish\">"
             end_format = "</li></ol>"
             
+            # displays current member ids
             f.inputs "Current Dancer IDs" do
                 (start_format + member_ids + end_format).html_safe
             end
@@ -148,6 +151,7 @@ ActiveAdmin.register CastingGroup do
     end
     
     csv do
+        # define custom format for csv exports here
         column(:casting_group) { |casting_group| casting_group.id }
         column(:dancers) { |casting_group| casting_group.dancers.each.collect { |item| item.name }.join(", ") }
         column(:dancers_ids) { |casting_group| casting_group.dancers.each.collect { |item| item.id }.join(", ") }
